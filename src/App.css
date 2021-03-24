@@ -1,0 +1,17 @@
+.app-wrapper {
+    width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas:
+  'h h'
+  'n c';
+    grid-template-rows: 80px 2fr;
+    grid-template-columns: 2fr 10fr;
+    grid-gap: 5px;
+
+}
+
+.app-wrapper-content {
+    grid-area: c;
+    background: honeydew;
+}

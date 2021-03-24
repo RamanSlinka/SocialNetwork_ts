@@ -1,0 +1,25 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+*/
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Special+Elite&display=swap');
+.nav {
+    grid-area: n;
+    background: #cffafa;
+    padding: 15px;
+    font-family: 'Special Elite', cursive;
+    font-weight: bold;
+
+}
+
+
+.item a{
+    color: #0cb5f8;
+    font-size: 25px;
+    /*font-weight: initial;*/
+    text-decoration: none;
+
+}
+
+.item a.active {
+    color: gold;
+    text-shadow: #0cb5f8 2px 4px 2px;
+}

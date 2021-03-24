@@ -1,0 +1,11 @@
+
+
+.item {
+    color: aqua;
+    font-size: 25px;
+}
+.img {
+    width: 80px;
+    border-radius: 50px;
+    border: #1decc0 1px solid;
+}

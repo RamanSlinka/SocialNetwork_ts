@@ -1,0 +1,21 @@
+
+.text_area {
+    margin: 0 auto;
+    width: 90%;
+    height: 40px;
+    border: none;
+    margin-left: 25px;
+
+}
+
+.btn {
+    padding: 4px 35px 4px 12px ;
+    background: cadetblue;
+    margin-left: 85%;
+    margin-top: 15px;
+    text-align: center;
+
+}
+.postsBlock{
+    padding: 10px;
+}
