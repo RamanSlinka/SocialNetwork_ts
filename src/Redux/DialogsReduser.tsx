@@ -1,4 +1,4 @@
-import {ActionTypes, DialogPageType, RootStateType} from "./state";
+import {ActionTypes, DialogPageType} from "./state";
 
 
 export const updateNewMessageBodyCreator = (text: string) => ({
