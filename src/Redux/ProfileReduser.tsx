@@ -1,4 +1,4 @@
-import {ActionTypes, PostsType, ProfilePageType } from "./state";
+import {ActionTypes, PostsType, ProfilePageType } from "./redux-store";
 
 
 
@@ -9,8 +9,15 @@ export const updateNewPostTextActionCreator = (text: string) => ({
     type: 'UPDATE-NEW-POST-TEXT',
     newText: text } as const)
 
+let initialState = {
+    posts: [
+        {id: 1, message: 'Hi, how are you ?', likesCount: 12},
+        {id: 2, message: "It's my firs post", likesCount: 11}
+    ],
+    newPostText: 'random text'
+}
 
-const profileReducer = (state: ProfilePageType, action: ActionTypes): ProfilePageType => {
+const profileReducer = (state: ProfilePageType = initialState, action: ActionTypes): ProfilePageType => {
 
     if (action.type === 'ADD-POST') {
         let newPost: PostsType = {

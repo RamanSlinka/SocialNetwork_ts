@@ -10,7 +10,7 @@ import Music from "./components/Music/Music";
 import Sidebar from "./components/Sidebar/Sidebar";
 
 import {Route} from 'react-router-dom';
-import {ActionTypes, RootStateType} from "./Redux/state";
+import {ActionTypes, RootStateType} from "./Redux/store";
 
 
 type AppPropsType = {

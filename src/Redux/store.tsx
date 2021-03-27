@@ -1,5 +1,7 @@
-import profileReducer, {addPostActionCreator, updateNewPostTextActionCreator} from "./ProfileReduser";
-import dialogsReducer, {sendMessageCreator, updateNewMessageBodyCreator} from "./DialogsReduser";
+import profileReducer, {addPostActionCreator,
+    updateNewPostTextActionCreator} from "./ProfileReduser";
+import dialogsReducer, {sendMessageCreator,
+    updateNewMessageBodyCreator} from "./DialogsReduser";
 
 export type StoreType = {
     _state: RootStateType
