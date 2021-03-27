@@ -1,6 +1,5 @@
 import {combineReducers, createStore} from "redux";
-import profileReducer, {addPostActionCreator,
-    updateNewPostTextActionCreator} from "./ProfileReduser";
+import profileReducer, {addPostActionCreator,  updateNewPostTextActionCreator} from "./ProfileReduser";
 import dialogsReducer, {sendMessageCreator,
     updateNewMessageBodyCreator} from "./DialogsReduser";
 

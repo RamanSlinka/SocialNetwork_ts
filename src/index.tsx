@@ -15,7 +15,7 @@ import {BrowserRouter} from "react-router-dom";
         <React.StrictMode>
 
             <BrowserRouter>
-                <App state={store.getState()} dispatch={store.dispatch.bind(store) }
+                <App store={store.getState()} dispatch={store.dispatch.bind(store) }
                     /* updateNewPostText={store.updateNewPostText.bind(store)}*//>
             </BrowserRouter>
 
@@ -27,5 +27,5 @@ rerenderEntireTree();
 
 store.subscribe(() => {
     let state = store.getState();
-    rerenderEntireTree(/*state*/ )
+    rerenderEntireTree(/*state*/)
 });
