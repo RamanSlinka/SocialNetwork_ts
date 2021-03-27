@@ -27,5 +27,5 @@ rerenderEntireTree();
 
 store.subscribe(() => {
     let state = store.getState();
-    rerenderEntireTree(/*state*/)
+    rerenderEntireTree(/*state*/ )
 });

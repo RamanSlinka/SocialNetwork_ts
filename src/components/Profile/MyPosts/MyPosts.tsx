@@ -1,15 +1,15 @@
 import React, {ChangeEvent} from 'react';
 import s from './MyPosts.module.css'
 import Post from './Post/Post';
-import {ActionTypes,  PostsType} from "../../../Redux/store";
+import {ActionTypes,  PostsType} from "../../../Redux/redux-store";
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../Redux/ProfileReduser";
 
 type PropsType = {
     posts: Array<PostsType>
-    dispatch: (action: ActionTypes) => void
+    /*dispatch: (action: ActionTypes) => void*/
     newPostText: string
-    /*updateNewPostText: (message: string) => void
-    addPost: (message: string) => void*/
+    updateNewPostText: (message: string) => void
+    addPost: () => void
 }
 
 export default function MyPosts(props: PropsType) {
@@ -19,17 +19,18 @@ export default function MyPosts(props: PropsType) {
 /*
     let newPostElement = React.createRef<HTMLTextAreaElement>();*/
 
-    let addPost = () => {
-        props.dispatch(addPostActionCreator());
+    let onAddPost = () => {
+      props.addPost();
+       /* props.dispatch(addPostActionCreator());*/
     }
 
     const onPostChange = (e:  ChangeEvent<HTMLTextAreaElement>) => {
         let text = e.currentTarget.value
-        props.dispatch(updateNewPostTextActionCreator(text))
+        props.updateNewPostText(text)
+        /*props.dispatch(updateNewPostTextActionCreator(text))*/
     }
 
     return (
-
         <div className={s.postsBlock}>
             <h3>My posts</h3>
             <div>
@@ -41,7 +42,7 @@ export default function MyPosts(props: PropsType) {
                     className={s.text_area}/>
                 <br/>
                 <button
-                    onClick={addPost}
+                    onClick={onAddPost}
                     className={s.btn}>Send
                 </button>
             </div>
