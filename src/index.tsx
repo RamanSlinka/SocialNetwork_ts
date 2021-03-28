@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
+import StoreContext from "./StoreContext";
 
 
 
@@ -15,8 +16,12 @@ import {BrowserRouter} from "react-router-dom";
         <React.StrictMode>
 
             <BrowserRouter>
-                <App store={store.getState()} dispatch={store.dispatch.bind(store) }
-                    /* updateNewPostText={store.updateNewPostText.bind(store)}*//>
+                <StoreContext.Provider  value={store}>
+                <App
+                    /*store={store.getState()} dispatch={store.dispatch.bind(store)*/
+                    /* updateNewPostText={store.updateNewPostText.bind(store)}*/
+                />
+                </StoreContext.Provider>
             </BrowserRouter>
 
         </React.StrictMode>,

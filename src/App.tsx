@@ -9,12 +9,13 @@ import Music from "./components/Music/Music";
 import Sidebar from "./components/Sidebar/Sidebar";
 
 import {Route} from 'react-router-dom';
-import { StoreType} from "./Redux/redux-store";
+import {StoreType} from "./Redux/redux-store";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 
-type AppPropsType = {
+/*type AppPropsType = {
     store: StoreType
+    }*/
 
   /*  state: RootStateType
     updateNewPostText: (message: string) => void
@@ -22,9 +23,9 @@ type AppPropsType = {
     dispatch: (action: ActionTypes) => void
 */
 
-}
 
-const App: React.FC<AppPropsType> = (props) => {
+
+const App/*: React.FC<AppPropsType>*/ = (/*props*/) => {
 
     return (
 
@@ -34,15 +35,18 @@ const App: React.FC<AppPropsType> = (props) => {
             <div className='app-wrapper-content'>
                 <Route path='/dialogs'
                        render={() => <DialogsContainer
-                                             store={props.store}
+                                            /* store={props.store}*/
+
                                              /*dialogs={props.state.dialogPage.dialogs}
                                               messages={props.state.dialogPage.messages}
                                               dispatch={props.dispatch}
                                               newMessageBody={props.state.dialogPage.newMessageBody}*/
                        />}/>
+
                 <Route path='/profile'
                        render={() => <Profile
-                           store={props.store}
+                           /*store={props.store}*/
+
                            /*profilePage={props.state.profilePage}*/
                            /*newPostText={props.state.profilePage.newPostText}*/
                            /*updateNewPostText={props.updateNewPostText}*/

@@ -14,11 +14,12 @@ type PropsType = {
     dispatch: (action: ActionTypes) => void*/
 }
 
-export default function Profile(props: PropsType) {
+export default function Profile(/*props: PropsType*/) {
     return (
         <div>
             <ProfileInfo/>
-            <MyPostsContainer  store={props.store}
+            <MyPostsContainer
+                /* store={props.store}*/
 
                /* posts={props.profilePage.posts}
                 newPostText={props.profilePage.newPostText}
