@@ -1,22 +1,19 @@
 import React, {ChangeEvent} from "react";
 import h from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
-import { DialogPageType} from "../../Redux/redux-store";
 import Message from "./Message/Message";
+import {DialogsPropsType} from "./DialogsContainer";
 
-
-
+/*
 type DialogsPropsType = {
     sendMessage: () => void
     dialogsPage: DialogPageType
     updateNewMessageBody: (message: string) => void
-
-    /*dialogs: Array<DialogType>
+    dialogs: Array<DialogType>
     messages: Array<MessageType>
     newMessageBody: string
-    dispatch: (action: ActionTypes) => void
-*/
-}
+    dispatch: (action: ActionTypes) => void*/
+
 
 export default function Dialogs(props: DialogsPropsType) {
 
@@ -36,10 +33,7 @@ export default function Dialogs(props: DialogsPropsType) {
         let body =  e.currentTarget.value
         props.updateNewMessageBody(body)
         /*props.dispatch(updateNewMessageBodyCreator(body))*/
-
     }
-
-
     return (
         <div className={h.dialogs}>
             <div className={h.dialogsItem}>
@@ -52,8 +46,7 @@ export default function Dialogs(props: DialogsPropsType) {
             <div>
                 <textarea
                     value={newMessageBody}
-                    onChange={onNewMessageChange}
-                    /*ref={newMessage}*/></textarea>
+                    onChange={onNewMessageChange}></textarea>
                 <button
                     onClick={onSendMessageClick}
                 >Send

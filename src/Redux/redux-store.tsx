@@ -3,57 +3,58 @@ import profileReducer, {addPostActionCreator,  updateNewPostTextActionCreator} f
 import dialogsReducer, {sendMessageCreator,
     updateNewMessageBodyCreator} from "./DialogsReduser";
 
-export type StoreType = {
-    _state: RootStateType
-    getState: () => RootStateType
-    _callSubscriber: () => void
-    /* updateNewPostText: (newText: string) => void
-     addPost: (message: string) => void*/
-    subscribe: (observer: () => void) => void
-    dispatch: (action: ActionTypes) => void
-}
+
 
 export type ActionTypes =
     ReturnType<typeof addPostActionCreator> | ReturnType<typeof updateNewPostTextActionCreator> |
     ReturnType<typeof updateNewMessageBodyCreator> | ReturnType<typeof sendMessageCreator>
 
+type StoreType = {
+    _state: RootStateType
+    getState: () => RootStateType
+    _callSubscriber: () => void
+    subscribe: (observer: () => void) => void
+    dispatch: (action: ActionTypes) => void
+}
 
-export type PostsType = {
+ type PostsType = {
     id: number
     message: string
     likesCount: number
 }
-export type DialogType = {
+ type DialogType = {
     id: number
     name: string
 }
-export type MessageType = {
+ type MessageType = {
     id: number
     message: string
 }
-
-
-export type DialogPageType = {
+ type DialogPageType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
     newMessageBody: string
 }
-export type ProfilePageType = {
+ type ProfilePageType = {
     posts: Array<PostsType>
     newPostText: string
 }
 type SidebarType = {}
-export type RootStateType = {
+ type RootStateType = {
     profilePage: ProfilePageType
     dialogPage: DialogPageType
     sidebar: SidebarType
 }
 
-export let reducers = combineReducers({
+
+
+
+export let rootReducer = combineReducers({
     profilePage: profileReducer,
     dialogPage: dialogsReducer
 })
 
-let store: StoreType = createStore(reducers);
+export type AppStateType = ReturnType<typeof rootReducer>
 
+let store: StoreType = createStore(rootReducer);
 export default store;
