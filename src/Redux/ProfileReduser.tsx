@@ -1,20 +1,21 @@
-import {ActionTypes } from "./redux-store";
-
+import {ActionTypes} from "./redux-store";
 
 
 export const addPostActionCreator = () => ({
-    type: 'ADD-POST' } as const)
+    type: 'ADD-POST'
+} as const)
 
 export const updateNewPostTextActionCreator = (text: string) => ({
     type: 'UPDATE-NEW-POST-TEXT',
-    newText: text } as const)
+    newText: text
+} as const)
 
 export type PostsType = {
     id: number
     message: string
     likesCount: number
 }
- export type initialStateType = {
+export type initialStateType = {
     posts: Array<PostsType>
     newPostText: string
 }
@@ -34,16 +35,20 @@ const profileReducer = (state: initialStateType = initialState, action: ActionTy
             message: state.newPostText,
             likesCount: 0
         }
-        state.posts.push(newPost);
-        state.newPostText = ' ';
+        let stateCopy = {...state};
+        stateCopy.posts = [...state.posts];
+        stateCopy.posts.push(newPost);
+        stateCopy.newPostText = '';
+        return stateCopy;
 
     } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-        state.newPostText = action.newText
-
+        let stateCopy = {...state};
+        stateCopy.newPostText = action.newText
+        return stateCopy
     }
 
 
     return state
 }
 
-export default  profileReducer
+export default profileReducer
