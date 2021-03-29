@@ -7,9 +7,7 @@ import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Sidebar from "./components/Sidebar/Sidebar";
-
 import {Route} from 'react-router-dom';
-import {StoreType} from "./Redux/redux-store";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 

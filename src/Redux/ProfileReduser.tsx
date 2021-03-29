@@ -27,28 +27,29 @@ let initialState: initialStateType = {
     newPostText: 'random text'
 }
 
-const profileReducer = (state: initialStateType = initialState, action: ActionTypes): initialStateType => {
-
-    if (action.type === 'ADD-POST') {
-        let newPost: PostsType = {
-            id: 6,
-            message: state.newPostText,
-            likesCount: 0
+const profileReducer = (state: initialStateType
+                            = initialState, action: ActionTypes): initialStateType => {
+    switch (action.type) {
+        case 'ADD-POST': {
+            let newPost = {
+                id: 6,
+                message: state.newPostText,
+                likesCount: 0
+            };
+            return {
+                ...state,
+                posts: [...state.posts, newPost],
+                newPostText: ''
+            };
         }
-        let stateCopy = {...state};
-        stateCopy.posts = [...state.posts];
-        stateCopy.posts.push(newPost);
-        stateCopy.newPostText = '';
-        return stateCopy;
-
-    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-        let stateCopy = {...state};
-        stateCopy.newPostText = action.newText
-        return stateCopy
+        case 'UPDATE-NEW-POST-TEXT': {
+            return {
+                ...state,
+                newPostText: action.newText
+            }
+        }
+        default:
+            return state
     }
-
-
-    return state
 }
-
 export default profileReducer
