@@ -1,24 +1,41 @@
-let initialState = {
+type UserLocationType = {
+    city: string
+    country: string
+}
+
+export type UserType = {
+    id: number
+    photoUrl: string
+    followed: boolean
+    fullName: string
+    status: string
+    location: UserLocationType
+}
+
+let initialState: initialStateType = {
     users: []
+};
+export type initialStateType = {
+    users: Array<UserType>
 }
 
 
 const usersReducer =
-    (state = initialState, action) => {
+    (state: initialStateType = initialState, action): initialStateType => {
 
         switch (action.type) {
             case 'FOLLOW':
-                return  {
+                return {
                     ...state,
                     users: state.users.map(u => {
                         if (u.id === action.userId) {
-                            return {...u, followed: true}
+                            return {...u, followed: true};
                         }
-                        return u
+                        return u;
                     })
-                }
+                };
             case 'UNFOLLOW':
-                return  {
+                return {
                     ...state,
                     users: state.users.map(u => {
                         if (u.id === action.userId) {
@@ -28,7 +45,7 @@ const usersReducer =
                     })
                 }
             case 'SET_USERS': {
-                return { ...state, users: [...state.users, ...action.users]}
+                return {...state, users: [...state.users, ...action.users]}
             }
             default:
                 return state;
@@ -38,6 +55,6 @@ const usersReducer =
 
 export const followAC = (userId: number) => ({type: 'FOLLOW', userId} as const)
 export const unFollowAC = (userId: number) => ({type: 'UNFOLLOW', userId} as const)
-export const setUsersAC = (users: any) => ({type: 'SET_USERS', users} as const)
+export const setUsersAC = (users: Array<UserType>) => ({type: 'SET_USERS', users} as const)
 
 export default usersReducer;

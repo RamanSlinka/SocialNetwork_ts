@@ -56,4 +56,5 @@ export const updateNewMessageBodyCreator = (text: string) => ({
 export const sendMessageCreator = () => ({
     type: 'SEND-MESSAGE'
 } as const)
+
 export default dialogsReducer;
