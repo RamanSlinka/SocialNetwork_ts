@@ -83,4 +83,5 @@ let mapDispatchToProps = (dispatch: Dispatch) => {
 }
 
 let DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
+
 export default DialogsContainer

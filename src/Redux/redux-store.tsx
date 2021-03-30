@@ -2,9 +2,10 @@ import {combineReducers, createStore} from "redux";
 import profileReducer, {addPostActionCreator,  updateNewPostTextActionCreator} from "./ProfileReduser";
 import dialogsReducer, {sendMessageCreator,
     updateNewMessageBodyCreator} from "./DialogsReduser";
+import usersReducer from "./UsersReducer";
 
 
-
+/*
 export type ActionTypes =
     ReturnType<typeof addPostActionCreator> | ReturnType<typeof updateNewPostTextActionCreator> |
     ReturnType<typeof updateNewMessageBodyCreator> | ReturnType<typeof sendMessageCreator>
@@ -44,17 +45,18 @@ type SidebarType = {}
     profilePage: ProfilePageType
     dialogPage: DialogPageType
     sidebar: SidebarType
-}
+}*/
 
 
 
 
 export let rootReducer = combineReducers({
     profilePage: profileReducer,
-    dialogPage: dialogsReducer
+    dialogPage: dialogsReducer,
+    usersPage: usersReducer
 })
 
 export type AppStateType = ReturnType<typeof rootReducer>
 
-let store: StoreType = createStore(rootReducer);
+let store: AppStateType = createStore(rootReducer);  //??????  какая типизация
 export default store;

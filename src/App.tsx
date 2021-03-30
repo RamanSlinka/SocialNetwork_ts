@@ -9,6 +9,7 @@ import Music from "./components/Music/Music";
 import Sidebar from "./components/Sidebar/Sidebar";
 import {Route} from 'react-router-dom';
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import Users from "./components/Users/Users";
 
 
 /*type AppPropsType = {
@@ -43,14 +44,17 @@ const App/*: React.FC<AppPropsType>*/ = (/*props*/) => {
 
                 <Route path='/profile'
                        render={() => <Profile
-                           /*store={props.store}*/
 
-                           /*profilePage={props.state.profilePage}*/
-                           /*newPostText={props.state.profilePage.newPostText}*/
-                           /*updateNewPostText={props.updateNewPostText}*/
-                           /*dispatch={props.dispatch}*/
+                         /*  store={props.store}
+                           profilePage={props.state.profilePage}
+                           newPostText={props.state.profilePage.newPostText}
+                           updateNewPostText={props.updateNewPostText}
+                           dispatch={props.dispatch}*/
 
                        />}/>
+
+                <Route path='/users'
+                       render={() => <UsersContainer/> }/>
 
                 <Route path='/news' component={News}/>
                 <Route path='/music' component={Music}/>

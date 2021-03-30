@@ -1,15 +1,5 @@
 import {ActionTypes} from "./redux-store";
 
-
-export const addPostActionCreator = () => ({
-    type: 'ADD-POST'
-} as const)
-
-export const updateNewPostTextActionCreator = (text: string) => ({
-    type: 'UPDATE-NEW-POST-TEXT',
-    newText: text
-} as const)
-
 export type PostsType = {
     id: number
     message: string
@@ -52,4 +42,13 @@ const profileReducer = (state: initialStateType
             return state
     }
 }
-export default profileReducer
+
+export const addPostActionCreator = () => ({
+    type: 'ADD-POST'
+} as const)
+
+export const updateNewPostTextActionCreator = (text: string) => ({
+    type: 'UPDATE-NEW-POST-TEXT',
+    newText: text
+} as const)
+export default profileReducer;
