@@ -1,4 +1,13 @@
-import {ActionTypes} from "./redux-store";
+
+
+type addPostACType ={
+    type: 'ADD-POST'
+}
+type updateNewPostTextACType = {
+    type: 'UPDATE-NEW-POST-TEXT'
+    newText: string
+}
+type ActionType = addPostACType | updateNewPostTextACType
 
 export type PostsType = {
     id: number
@@ -18,7 +27,7 @@ let initialState: initialStateType = {
 }
 
 const profileReducer = (state: initialStateType
-                            = initialState, action: ActionTypes): initialStateType => {
+                            = initialState, action: ActionType): initialStateType => {
     switch (action.type) {
         case 'ADD-POST': {
             let newPost = {
@@ -43,11 +52,11 @@ const profileReducer = (state: initialStateType
     }
 }
 
-export const addPostActionCreator = () => ({
+export const addPostActionCreator = ():addPostACType  => ({
     type: 'ADD-POST'
 } as const)
 
-export const updateNewPostTextActionCreator = (text: string) => ({
+export const updateNewPostTextActionCreator = (text: string):updateNewPostTextACType => ({
     type: 'UPDATE-NEW-POST-TEXT',
     newText: text
 } as const)

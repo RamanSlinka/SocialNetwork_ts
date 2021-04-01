@@ -3,7 +3,7 @@ import profileReducer, {addPostActionCreator,
 import dialogsReducer, {sendMessageCreator,
     updateNewMessageBodyCreator} from "./DialogsReduser";
 
-export type StoreType = {
+ type StoreType = {
     _state: RootStateType
     getState: () => RootStateType
     _callSubscriber: () => void
@@ -13,37 +13,37 @@ export type StoreType = {
     dispatch: (action: ActionTypes) => void
 }
 
-export type ActionTypes =
+ type ActionTypes =
     ReturnType<typeof addPostActionCreator> | ReturnType<typeof updateNewPostTextActionCreator> |
     ReturnType<typeof updateNewMessageBodyCreator> | ReturnType<typeof sendMessageCreator>
 
 
-export type PostsType = {
+ type PostsType = {
     id: number
     message: string
     likesCount: number
 }
-export type DialogType = {
+type DialogType = {
     id: number
     name: string
 }
-export type MessageType = {
+ type MessageType = {
     id: number
     message: string
 }
 
 
-export type DialogPageType = {
+ type DialogPageType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
     newMessageBody: string
 }
-export type ProfilePageType = {
+ type ProfilePageType = {
     posts: Array<PostsType>
     newPostText: string
 }
 type SidebarType = {}
-export type RootStateType = {
+ type RootStateType = {
     profilePage: ProfilePageType
     dialogPage: DialogPageType
     sidebar: SidebarType

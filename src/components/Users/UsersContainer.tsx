@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import Users from "./Users";
 import {Dispatch} from "redux";
 import {AppStateType} from "../../Redux/redux-store";
-import {followAC, initialStateType, setUsersAC, unFollowAC, UserType} from "../../Redux/UsersReducer";
+import {followAC,  setUsersAC, unFollowAC, UserType} from "../../Redux/UsersReducer";
 
 type mapStateToPropsType = {
-    users: initialStateType
+    users: Array<UserType>
 }
 
 type mapDispatchToPropsType = {
-    follow: (userId: number ) => void
+    follow: (userId: number ) => void                //event: MouseEvent<HTMLButtonElement, MouseEvent>) => void)
     unfollow: (userId: number ) => void
     setUsers: (users:Array<UserType>) => void
 }
