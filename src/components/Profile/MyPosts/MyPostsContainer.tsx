@@ -5,6 +5,7 @@ import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
 import {initialStateType} from "../../../Redux/DialogsReduser";
 import {Dispatch} from "redux";
+import {AppStateType} from "../../../Redux/redux-store";
 /*
 type PropsType = {
     store: StoreType
@@ -58,7 +59,7 @@ type mapDispatchToPropsType = {
 }
 export type MyPostsType = mapStateToPropsType & mapDispatchToPropsType;
 
-const mapStateToProps = (state: initialStateType): mapStateToPropsType => {
+const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
     return {
         posts: state.profilePage.posts,
         newPostText: state.profilePage.newPostText

@@ -1,18 +1,16 @@
 import React from 'react';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import { StoreType} from "../../Redux/redux-store";
+
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 
-type PropsType = {
-    store: StoreType
 
   /*  profilePage: ProfilePageType
     posts: Array<PostsType>
     updateNewPostText: (message: string) => void
     addPost: (message: string) => void
     dispatch: (action: ActionTypes) => void*/
-}
+
 
 export default function Profile(/*props: PropsType*/) {
     return (

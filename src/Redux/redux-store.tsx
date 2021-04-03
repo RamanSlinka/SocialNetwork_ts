@@ -10,11 +10,11 @@ import usersReducer from "./UsersReducer";
 
 export let rootReducer = combineReducers({
     profilePage: profileReducer,
-    dialogPage: dialogsReducer,
+    dialogsPage: dialogsReducer,
     usersPage: usersReducer
 })
 
 export type AppStateType = ReturnType<typeof rootReducer>
 
-let store: AppStateType = createStore(rootReducer);  //??????  какая типизация
+let store  = createStore(rootReducer);  //??????  какая типизация
 export default store;

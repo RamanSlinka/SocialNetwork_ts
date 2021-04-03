@@ -26,6 +26,7 @@ import  {Provider} from "react-redux";
         </React.StrictMode>,
         document.getElementById('root')
     );
-}
+
+
 /*rerenderEntireTree();*/
 

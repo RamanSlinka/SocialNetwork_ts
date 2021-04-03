@@ -48,6 +48,7 @@ type SidebarType = {}
     dialogPage: DialogPageType
     sidebar: SidebarType
 }
+/*
 
 let store: StoreType = {
     _state: {
@@ -94,7 +95,7 @@ let store: StoreType = {
         this._callSubscriber();
 
 
-      /*  if (action.type === 'ADD-POST') {
+      /!*  if (action.type === 'ADD-POST') {
             let newPost: PostsType = {
                 id: 6,
                 message: this._state.profilePage.newPostText,
@@ -115,9 +116,9 @@ let store: StoreType = {
             this._state.dialogPage.messages.push({id: 4, message: body});
             this._callSubscriber();
         }
-   */ }
+   *!/ }
 
-    /* addPost(message: string) {
+    /!* addPost(message: string) {
          let newPost: PostsType = {
              id: 6,
              message: this._state.profilePage.newPostText,
@@ -131,12 +132,12 @@ let store: StoreType = {
      updateNewPostText(newText: string) {
          this._state.profilePage.newPostText = newText
          this._callSubscriber();
-     },*/
+     },*!/
 
 
 }
 
-/*
+/!*
 export const addPostActionCreator = () => ({
     type: 'ADD-POST'
 } as const)
@@ -153,6 +154,6 @@ export const updateNewMessageBodyCreator = (text: string) => ({
 
 export const sendMessageCreator = () => ({
     type: 'SEND-MESSAGE'
-} as const)*/
+} as const)*!/
 
-export default store;
+export default store;*/

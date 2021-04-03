@@ -9,6 +9,7 @@ import {
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
+import {AppStateType} from "../../Redux/redux-store";
 
 
 /*type DialogsPropsType = {
@@ -60,18 +61,18 @@ type mapStateToPropsType = {
     dialogsPage: DialogPageType
 }
 type mapDispatchToPropsType = {
-    updateNewMessageBody: () => void
-    sendMessage: (body: string) => void
+    updateNewMessageBody: (body: string) => void
+    sendMessage: () => void
 }
 
 export type DialogsPropsType = mapStateToPropsType & mapDispatchToPropsType
 
-let mapStateToProps = (state: initialStateType): mapStateToPropsType => {
+let mapStateToProps = (state: AppStateType): mapStateToPropsType => {
     return {
         dialogsPage: state.dialogsPage
     }
 }
-let mapDispatchToProps = (dispatch: Dispatch) => {
+let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
     return {
         sendMessage: () => {
             dispatch(sendMessageCreator())
