@@ -5,16 +5,13 @@ import {UsersPropsType} from "./UsersContainer";
 import userPhoto from "../../assets/images/user.png";
 
 
-class Users extends React.Component {
-constructor(props: UsersPropsType) {
-    super(props);
+class Users extends React.Component<UsersPropsType> {
 
-
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-            this.props.setUsers(response.data.items)
-        })
+componentDidMount() {
+    axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+        this.props.setUsers(response.data.items)
+    })
 }
-
 
     render () {
         return (
@@ -52,15 +49,7 @@ constructor(props: UsersPropsType) {
         )
     }
 }
-
-
-
-
-
-
-
-
-
+export default Users;
 
 
 /*
@@ -111,4 +100,3 @@ let Users = (props: UsersPropsType) => {
 }*/
 
 
-export default Users;
