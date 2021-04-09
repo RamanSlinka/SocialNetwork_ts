@@ -13,7 +13,16 @@ type SetUsersACType = {
     type: 'SET_USERS'
     users: Array<UserType>
 }
-type ActionType = FollowACType | UnFollowACType | SetUsersACType
+type SetCurrentPageACType = {
+    type: 'SET_CURRENT_PAGE'
+    currentPage: number
+}
+type SetUsersTotalCountACType = {
+    type: 'SET_USERS_TOTAL_COUNT'
+    totalCount: number
+}
+type ActionType = FollowACType | UnFollowACType
+    | SetUsersACType | SetCurrentPageACType | SetUsersTotalCountACType
 
 type UserLocationType = {
     city: string
@@ -34,10 +43,19 @@ export type UserType = {
 }
 
 let initialState: initialStateType = {
-    users: []
+    users: [],
+    pageSize: 5,
+   // totalUsersCount: 0,
+    totalCount: 0,
+    currentPage: 1
+
 };
 export type initialStateType = {
     users: Array<UserType>
+    pageSize: number
+   // totalUsersCount: number
+    totalCount: number
+    currentPage: number
 }
 const usersReducer =
     (state: initialStateType = initialState, action: ActionType): initialStateType => {
@@ -64,7 +82,13 @@ const usersReducer =
                     })
                 }
             case 'SET_USERS': {
-                return {...state, users: [...state.users, ...action.users]}
+                return {...state, users:  action.users}
+            }
+            case 'SET_CURRENT_PAGE': {
+                return {...state, currentPage: action.currentPage}
+            }
+            case 'SET_USERS_TOTAL_COUNT': {
+                return {...state, totalCount: action.totalCount}
             }
             default:
                 return state;
@@ -75,5 +99,9 @@ const usersReducer =
 export const followAC = (userId: number): FollowACType => ({type: 'FOLLOW', userId} as const)
 export const unFollowAC = (userId: number): UnFollowACType => ({type: 'UNFOLLOW', userId} as const)
 export const setUsersAC = (users: Array<UserType>):SetUsersACType => ({type: 'SET_USERS', users} as const)
+export const setCurrentPageAC =(currentPage: number):SetCurrentPageACType => ({type: 'SET_CURRENT_PAGE', currentPage} as const)
+export const setUsersTotalCountAC
+    =(totalCount: number):SetUsersTotalCountACType => ({type: 'SET_USERS_TOTAL_COUNT', totalCount} as const)
+
 
 export default usersReducer;
