@@ -44,7 +44,7 @@ export type UserType = {
 
 let initialState: initialStateType = {
     users: [],
-    pageSize: 5,
+    pageSize: 15,
    // totalUsersCount: 0,
     totalCount: 0,
     currentPage: 1
@@ -96,12 +96,16 @@ const usersReducer =
     }
 
 
-export const followAC = (userId: number): FollowACType => ({type: 'FOLLOW', userId} as const)
-export const unFollowAC = (userId: number): UnFollowACType => ({type: 'UNFOLLOW', userId} as const)
-export const setUsersAC = (users: Array<UserType>):SetUsersACType => ({type: 'SET_USERS', users} as const)
-export const setCurrentPageAC =(currentPage: number):SetCurrentPageACType => ({type: 'SET_CURRENT_PAGE', currentPage} as const)
-export const setUsersTotalCountAC
-    =(totalCount: number):SetUsersTotalCountACType => ({type: 'SET_USERS_TOTAL_COUNT', totalCount} as const)
+export const followAC = (userId: number): FollowACType =>
+    ({type: 'FOLLOW', userId} as const)
+export const unFollowAC = (userId: number): UnFollowACType =>
+    ({type: 'UNFOLLOW', userId} as const)
+export const setUsersAC = (users: Array<UserType>):SetUsersACType =>
+    ({type: 'SET_USERS', users} as const)
+export const setCurrentPageAC =(currentPage: number):SetCurrentPageACType =>
+    ({type: 'SET_CURRENT_PAGE', currentPage} as const)
+export const setUsersTotalCountAC=(totalCount: number):SetUsersTotalCountACType =>
+    ({type: 'SET_USERS_TOTAL_COUNT', totalCount} as const)
 
 
 export default usersReducer;
