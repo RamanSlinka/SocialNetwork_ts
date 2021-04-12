@@ -55,6 +55,7 @@ const App/*: React.FC<AppPropsType>*/ = (/*props*/) => {
                        />}/>
 
                 <Route path='/users'
+                       //@ts-ignore
                        render={() => <UsersContainer/> }/>
 
                 <Route path='/news' component={News}/>

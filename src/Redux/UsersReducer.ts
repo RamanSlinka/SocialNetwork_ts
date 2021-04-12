@@ -107,17 +107,17 @@ const usersReducer =
     }
 
 
-export const followAC = (userId: number): FollowACType =>
+export const follow = (userId: number): FollowACType =>
     ({type: 'FOLLOW', userId} as const)
-export const unFollowAC = (userId: number): UnFollowACType =>
+export const unFollow = (userId: number): UnFollowACType =>
     ({type: 'UNFOLLOW', userId} as const)
-export const setUsersAC = (users: Array<UserType>):SetUsersACType =>
+export const setUsers = (users: Array<UserType>):SetUsersACType =>
     ({type: 'SET_USERS', users} as const)
-export const setCurrentPageAC =(currentPage: number):SetCurrentPageACType =>
+export const setCurrentPage =(currentPage: number):SetCurrentPageACType =>
     ({type: 'SET_CURRENT_PAGE', currentPage} as const)
-export const setUsersTotalCountAC=(totalCount: number):SetUsersTotalCountACType =>
+export const setUsersTotalCount=(totalCount: number):SetUsersTotalCountACType =>
     ({type: 'SET_USERS_TOTAL_COUNT', totalCount} as const)
-export const setToggleIsFetchingAC=(isFetching: boolean):setToggleIsFetchingACType =>
+export const setToggleIsFetching=(isFetching: boolean):setToggleIsFetchingACType =>
     ({type: 'TOGGLE_IS_FETCHING', isFetching} as const)
 
 
