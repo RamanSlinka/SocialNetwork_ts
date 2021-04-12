@@ -21,8 +21,13 @@ type SetUsersTotalCountACType = {
     type: 'SET_USERS_TOTAL_COUNT'
     totalCount: number
 }
+type setToggleIsFetchingACType = {
+    type: 'TOGGLE_IS_FETCHING'
+    isFetching: boolean
+}
 type ActionType = FollowACType | UnFollowACType
-    | SetUsersACType | SetCurrentPageACType | SetUsersTotalCountACType
+    | SetUsersACType | SetCurrentPageACType | SetUsersTotalCountACType |
+    setToggleIsFetchingACType
 
 type UserLocationType = {
     city: string
@@ -47,7 +52,8 @@ let initialState: initialStateType = {
     pageSize: 15,
    // totalUsersCount: 0,
     totalCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: true
 
 };
 export type initialStateType = {
@@ -56,7 +62,9 @@ export type initialStateType = {
    // totalUsersCount: number
     totalCount: number
     currentPage: number
+    isFetching: boolean
 }
+
 const usersReducer =
     (state: initialStateType = initialState, action: ActionType): initialStateType => {
 
@@ -90,6 +98,9 @@ const usersReducer =
             case 'SET_USERS_TOTAL_COUNT': {
                 return {...state, totalCount: action.totalCount}
             }
+            case 'TOGGLE_IS_FETCHING': {
+                return {...state, isFetching: action.isFetching}
+            }
             default:
                 return state;
         }
@@ -106,6 +117,8 @@ export const setCurrentPageAC =(currentPage: number):SetCurrentPageACType =>
     ({type: 'SET_CURRENT_PAGE', currentPage} as const)
 export const setUsersTotalCountAC=(totalCount: number):SetUsersTotalCountACType =>
     ({type: 'SET_USERS_TOTAL_COUNT', totalCount} as const)
+export const setToggleIsFetchingAC=(isFetching: boolean):setToggleIsFetchingACType =>
+    ({type: 'TOGGLE_IS_FETCHING', isFetching} as const)
 
 
 export default usersReducer;
