@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header/Header'
 import NavBar from './components/NavBar/NavBar'
-import Profile from './components/Profile/Profile'
 import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
@@ -10,6 +9,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import {Route} from 'react-router-dom';
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from './components/Users/UsersContainer';
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 
 
@@ -44,7 +44,7 @@ const App/*: React.FC<AppPropsType>*/ = (/*props*/) => {
                        />}/>
 
                 <Route path='/profile'
-                       render={() => <Profile
+                       render={() => <ProfileContainer
 
                          /*  store={props.store}
                            profilePage={props.state.profilePage}

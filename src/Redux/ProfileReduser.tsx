@@ -7,7 +7,11 @@ type updateNewPostTextACType = {
     type: 'UPDATE-NEW-POST-TEXT'
     newText: string
 }
-type ActionType = addPostACType | updateNewPostTextACType
+type setUserProfileACType = {
+    type: 'SET-USER-PROFILE'
+    profile: any
+}
+type ActionType = addPostACType | updateNewPostTextACType | setUserProfileACType
 
 export type PostsType = {
     id: number
@@ -17,13 +21,16 @@ export type PostsType = {
 export type initialStateType = {
     posts: Array<PostsType>
     newPostText: string
+    profile: any
 }
+
 let initialState: initialStateType = {
     posts: [
         {id: 1, message: 'Hi, how are you ?', likesCount: 12},
         {id: 2, message: "It's my firs post", likesCount: 11}
     ],
-    newPostText: 'random text'
+    newPostText: 'random text',
+    profile: {}
 }
 
 const profileReducer = (state: initialStateType
@@ -47,6 +54,9 @@ const profileReducer = (state: initialStateType
                 newPostText: action.newText
             }
         }
+        case "SET-USER-PROFILE" : {
+            return {...state, profile: action.profile}
+        }
         default:
             return state
     }
@@ -59,5 +69,9 @@ export const addPostActionCreator = ():addPostACType  => ({
 export const updateNewPostTextActionCreator = (text: string):updateNewPostTextACType => ({
     type: 'UPDATE-NEW-POST-TEXT',
     newText: text
+} as const)
+export const setUserProfile = (profile: any):setUserProfileACType => ({
+    type: 'SET-USER-PROFILE',
+    profile: profile
 } as const)
 export default profileReducer;

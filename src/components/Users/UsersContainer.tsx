@@ -9,6 +9,7 @@ import {
 import axios from "axios";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
+import {Dispatch} from "redux";
 
 
 type mapStateToPropsType = {
@@ -43,28 +44,28 @@ let mapStateToProps = (state: AppStateType): mapStateToPropsType => {
 }
 
 
-/*let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
+let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
     return {
         follow: (userId: number) => {
-            dispatch(followAC(userId))
+            dispatch(follow(userId))
         },
         unfollow: (userId: number) => {
-            dispatch(unFollowAC(userId))
+            dispatch(unFollow(userId))
         },
         setUsers: (users:Array<UserType>) => {
-            dispatch(setUsersAC(users))
+            dispatch(setUsers(users))
         },
         setCurrentPage: ( currentPage: number) => {
-            dispatch(setCurrentPageAC(currentPage))
+            dispatch(setCurrentPage(currentPage))
         },
         setTotalUsersCount: (totalCount: number) => {
-          dispatch(setUsersTotalCountAC(totalCount))
+          dispatch(setUsersTotalCount(totalCount))
         },
         toggleIsFetching: (isFetching: boolean) => {
-            dispatch(setToggleIsFetchingAC(isFetching))
+            dispatch(setToggleIsFetching(isFetching))
         }
     }
-}*/
+}
 
 class UsersAPIComponent extends React.Component<UsersPropsType> {
 
@@ -109,12 +110,12 @@ class UsersAPIComponent extends React.Component<UsersPropsType> {
 }
 
 
-export default connect (mapStateToProps,
-    { follow,
+export default connect (mapStateToProps, mapDispatchToProps
+    /*{ follow,
     unFollow,
     setUsers,
     setCurrentPage,
     setUsersTotalCount,
     setToggleIsFetching
-    }
+    }*/
    ) (UsersAPIComponent);

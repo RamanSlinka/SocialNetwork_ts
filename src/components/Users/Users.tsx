@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./users.module.css";
 import userPhoto from "../../assets/images/user.png";
 import {UsersPropsType} from "./UsersContainer";
+import { NavLink } from "react-router-dom";
 
 
 type OnPageChangedType = {
@@ -21,10 +22,10 @@ let Users = (props: UsersPropsType & OnPageChangedType) => {
             <div>
                 {pages.map(p => {
                     return <span
-                        //@ts-ignore
+      //@ts-ignore
                         className={props.currentPage === p && styles.selectedPage}
                         onClick={(e) => {
-                            //@ts-ignore
+     //@ts-ignore
                             props.onPageChanged(p)
                         }}
                     > {p} </span>
@@ -34,8 +35,10 @@ let Users = (props: UsersPropsType & OnPageChangedType) => {
                 props.users.map(u => <div key={u.id}>
                     <span>
                         <div>
+                            <NavLink to={'/profile/' + u.id}>
                             <img src={u.photos.small ? u.photos.small : userPhoto}
                                  alt="user" className={styles.userPhoto}/>
+                                </NavLink>
                         </div>
                         <div>
                             {u.followed
