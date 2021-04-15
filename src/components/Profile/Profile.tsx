@@ -12,10 +12,10 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
     dispatch: (action: ActionTypes) => void*/
 
 
-export default function Profile(/*props: PropsType*/) {
+export default function Profile(props: any) {
     return (
         <div>
-            <ProfileInfo/>
+            <ProfileInfo profile={props.profile}/>
             <MyPostsContainer
                 /* store={props.store}*/
 

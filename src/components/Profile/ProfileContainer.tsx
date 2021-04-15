@@ -2,7 +2,7 @@ import React from 'react';
 import Profile from "./Profile";
 import axios from "axios";
 import {connect} from "react-redux";
-import {setUserProfile} from "../../Redux/ProfileReduser";
+import {initialStateType, setUserProfile} from "../../Redux/ProfileReduser";
 
 
 
@@ -19,14 +19,14 @@ class ProfileContainer extends React.Component<any, any>{
     render() {
         return (
             <div>
-                <Profile {...this.props}/>
+                <Profile {...this.props}
+                profile={this.props.profile}
+                />
             </div>
 
         );
     }
 }
 
-let mapStateToProps = () => ({
-
-})
+let mapStateToProps = (state): initialStateType => ({profile: state.profilePage.profile})
 export default connect(mapStateToProps, {setUserProfile}) (ProfileContainer);

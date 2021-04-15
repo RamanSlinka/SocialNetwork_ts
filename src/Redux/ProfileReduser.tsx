@@ -30,7 +30,7 @@ let initialState: initialStateType = {
         {id: 2, message: "It's my firs post", likesCount: 11}
     ],
     newPostText: 'random text',
-    profile: {}
+    profile: null
 }
 
 const profileReducer = (state: initialStateType
@@ -70,7 +70,7 @@ export const updateNewPostTextActionCreator = (text: string):updateNewPostTextAC
     type: 'UPDATE-NEW-POST-TEXT',
     newText: text
 } as const)
-export const setUserProfile = (profile: any):setUserProfileACType => ({
+export const setUserProfile = (profile: string):setUserProfileACType => ({
     type: 'SET-USER-PROFILE',
     profile: profile
 } as const)
