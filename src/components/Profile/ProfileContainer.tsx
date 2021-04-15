@@ -28,5 +28,5 @@ class ProfileContainer extends React.Component<any, any>{
     }
 }
 
-let mapStateToProps = (state): initialStateType => ({profile: state.profilePage.profile})
+let mapStateToProps = (state: initialStateType) => ({profile: state.profile})
 export default connect(mapStateToProps, {setUserProfile}) (ProfileContainer);
