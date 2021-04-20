@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./users.module.css";
 import userPhoto from "../../assets/images/user.png";
-import {UsersPropsType} from "./UsersContainer";
-import { NavLink } from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {UserType} from "../../Redux/UsersReducer";
 
 
@@ -13,9 +12,9 @@ type OnPageChangedType = {
     currentPage: number
     totalCount: number
 
-    onPageChanged :( page: number) => void
-    follow: (userId: number ) => void
-    unfollow: (userId: number ) => void
+    onPageChanged: (page: number) => void
+    follow: (userId: number) => void
+    unfollow: (userId: number) => void
 
 }
 
@@ -23,7 +22,18 @@ let Users = (props: OnPageChangedType) => {
     let pagesCount = Math.ceil(props.totalCount / props.pageSize)
 
     let pages = []
-    for (let i = 1; i <= pagesCount; i++) {
+//  нашёл функцию для пагинации ! как применить ?
+
+   /* function pagination(b:number, c: number, d: number) {
+        return Array(d + 1).join("1").split("").map(function (a, b) {
+            return b + 1
+        }).filter(function (a, e) {
+            return c ? 1 === a || a === b || a === d || a <= b + c && a >= b - c : !0
+        })
+    };*/
+
+
+    for (let i = 1; i <= 30 /*pagesCount*/; i++) {
         pages.push(i)
     }
     return (
