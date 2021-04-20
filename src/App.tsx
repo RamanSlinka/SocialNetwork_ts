@@ -13,17 +13,6 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 
 
 
-/*type AppPropsType = {
-    store: StoreType
-    }*/
-
-  /*  state: RootStateType
-    updateNewPostText: (message: string) => void
-    addPost: (message: string) => void
-    dispatch: (action: ActionTypes) => void
-*/
-
-
 
 const App/*: React.FC<AppPropsType>*/ = (/*props*/) => {
 
@@ -35,27 +24,14 @@ const App/*: React.FC<AppPropsType>*/ = (/*props*/) => {
             <div className='app-wrapper-content'>
                 <Route path='/dialogs'
                        render={() => <DialogsContainer
-                                            /* store={props.store}*/
-
-                                             /*dialogs={props.state.dialogPage.dialogs}
-                                              messages={props.state.dialogPage.messages}
-                                              dispatch={props.dispatch}
-                                              newMessageBody={props.state.dialogPage.newMessageBody}*/
-                       />}/>
+                         />}/>
 
                 <Route path='/profile'
                        render={() => <ProfileContainer
-
-                         /*  store={props.store}
-                           profilePage={props.state.profilePage}
-                           newPostText={props.state.profilePage.newPostText}
-                           updateNewPostText={props.updateNewPostText}
-                           dispatch={props.dispatch}*/
-
                        />}/>
 
                 <Route path='/users'
-                       //@ts-ignore
+
                        render={() => <UsersContainer/> }/>
 
                 <Route path='/news' component={News}/>

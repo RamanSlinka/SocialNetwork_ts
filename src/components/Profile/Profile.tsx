@@ -17,13 +17,7 @@ export default function Profile(props: any) {
         <div>
             <ProfileInfo profile={props.profile}/>
             <MyPostsContainer
-                /* store={props.store}*/
-
-               /* posts={props.profilePage.posts}
-                newPostText={props.profilePage.newPostText}
-                /!*updateNewPostText={props.updateNewPostText}*!/
-                dispatch={props.dispatch}*/
-            />
+                 />
         </div>
 
     );

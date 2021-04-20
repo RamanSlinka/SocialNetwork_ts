@@ -21,15 +21,7 @@ type mapStateToPropsType = {
     isFetching: boolean
 }
 
-type mapDispatchToPropsType = {
-    follow: (userId: number ) => void
-    unfollow: (userId: number ) => void
-    setUsers: (users:Array<UserType>) => void
-    setCurrentPage: (currentPage: number) => void
-    setTotalUsersCount: (totalCount: number) => void
-    toggleIsFetching: (isFetching: boolean) => void
 
-}
 
 export  type UsersPropsType = mapStateToPropsType & mapDispatchToPropsType
 
@@ -42,14 +34,14 @@ let mapStateToProps = (state: AppStateType): mapStateToPropsType => {
         isFetching: state.usersPage.isFetching
     }
 }
-
+/*
 
 let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
     return {
         follow: (userId: number) => {
             dispatch(follow(userId))
         },
-        unfollow: (userId: number) => {
+        unFollow: (userId: number) => {
             dispatch(unFollow(userId))
         },
         setUsers: (users:Array<UserType>) => {
@@ -65,7 +57,7 @@ let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
             dispatch(setToggleIsFetching(isFetching))
         }
     }
-}
+}*/
 
 class UsersAPIComponent extends React.Component<UsersPropsType> {
 
@@ -98,24 +90,34 @@ class UsersAPIComponent extends React.Component<UsersPropsType> {
             <Users  totalCount={this.props.totalCount}
                     pageSize={this.props.pageSize}
                     currentPage={this.props.currentPage}
-                //@ts-ignore
+
                     onPageChanged={this.onPageChanged}
                     users={this.props.users}
                     follow={this.props.follow}
-                    unfollow={this.props.unfollow}
+                    unfollow={this.props.unFollow}
             />
             </>
         )
     }
 }
 
+//  ниже при сокращённом описании mapDispatchToProps - не проходило из-за ошибки
+type mapDispatchToPropsType = {
+    follow: (userId: number ) => void
+    unFollow: (userId: number ) => void
+    setUsers: (users:Array<UserType>) => void
+    setCurrentPage: (currentPage: number) => void
+    setTotalUsersCount: (totalCount: number) => void
+    toggleIsFetching: (isFetching: boolean) => void
 
-export default connect (mapStateToProps, mapDispatchToProps
-    /*{ follow,
-    unFollow,
-    setUsers,
-    setCurrentPage,
-    setUsersTotalCount,
-    setToggleIsFetching
-    }*/
+}
+export default connect<mapStateToPropsType, mapDispatchToPropsType, {}, AppStateType>(mapStateToProps,
+    {
+        follow,
+        unFollow,
+        setUsers,
+        setCurrentPage,
+        setTotalUsersCount: setUsersTotalCount,
+        toggleIsFetching: setToggleIsFetching,
+    }
    ) (UsersAPIComponent);

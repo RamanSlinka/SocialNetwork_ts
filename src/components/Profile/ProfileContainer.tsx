@@ -3,6 +3,7 @@ import Profile from "./Profile";
 import axios from "axios";
 import {connect} from "react-redux";
 import {initialStateType, setUserProfile} from "../../Redux/ProfileReduser";
+import {AppStateType} from "../../Redux/redux-store";
 
 
 
@@ -28,5 +29,5 @@ class ProfileContainer extends React.Component<any, any>{
     }
 }
 
-let mapStateToProps = (state: initialStateType) => ({profile: state.profile})
+let mapStateToProps = (state: AppStateType) => ({profile: state.profilePage.profile})
 export default connect(mapStateToProps, {setUserProfile}) (ProfileContainer);
