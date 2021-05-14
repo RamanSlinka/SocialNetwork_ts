@@ -17,7 +17,8 @@ export default function ProfileInfo(props: any) {
             </div>
             <div className={p.descriptionBlock}>
                 <img src={props.profile.photos.large} className={p.avatar} />
-              {/* <img src="https://avatarko.ru/img/kartinka/5/kot_ochki_4754.jpg" alt="avatar" className={p.avatar}/>*/}
+              {/* <img src="https://avatarko.ru/img/kartinka/5/kot_ochki_4754.jpg"
+              alt="avatar" className={p.avatar}/>*/}
             </div>
         </div>
     );

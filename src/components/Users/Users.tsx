@@ -3,6 +3,7 @@ import styles from "./users.module.css";
 import userPhoto from "../../assets/images/user.png";
 import {NavLink} from "react-router-dom";
 import {UserType} from "../../Redux/UsersReducer";
+import axios from "axios";
 
 
 type OnPageChangedType = {
@@ -20,10 +21,13 @@ type OnPageChangedType = {
 
 let Users = (props: OnPageChangedType) => {
     let pagesCount = Math.ceil(props.totalCount / props.pageSize)
-
     let pages = []
-//  нашёл функцию для пагинации ! как применить ?
+    for (let i = 1; i <= 30 /*pagesCount*/; i++) {
+        pages.push(i)
+    }
 
+
+//  нашёл функцию для пагинации ! как применить ?
    /* function pagination(b:number, c: number, d: number) {
         return Array(d + 1).join("1").split("").map(function (a, b) {
             return b + 1
@@ -33,9 +37,7 @@ let Users = (props: OnPageChangedType) => {
     };*/
 
 
-    for (let i = 1; i <= 30 /*pagesCount*/; i++) {
-        pages.push(i)
-    }
+
     return (
         <div>
             <div>
@@ -62,10 +64,41 @@ let Users = (props: OnPageChangedType) => {
                         <div>
                             {u.followed
                                 ? <button onClick={() => {
-                                    props.unfollow(u.id)
+
+                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{
+                                        withCredentials: true,
+                                    headers: {
+                                            'API-KEY' : '3d0e16a8-fd7d-4f04-a847-cacf5931e58d'
+                                    }
+                                    })
+                                        .then(response => {
+                                            if(response.data.resultCode === 0) {
+                                                props.unfollow(u.id)
+                                            }
+                                        })
+
+
+
+
                                 }}>follow</button>
-                                : <button onClick={() => props.follow(u.id)}>Unfollow</button>}
-                            <button>follow</button>
+                                : <button onClick={() => {
+
+                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
+                                        {}, {withCredentials: true,
+                                            headers: {
+                                                'API-KEY' : '3d0e16a8-fd7d-4f04-a847-cacf5931e58d'
+                                            }
+                                        })
+                                        .then(response => {
+                                            if(response.data.resultCode === 0) {
+                                                props.follow(u.id);
+                                            }
+                                        })
+
+
+
+                                }}>Unfollow</button>}
+
                         </div>
                     </span>
                     <span>
