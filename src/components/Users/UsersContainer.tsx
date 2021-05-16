@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import {AppStateType} from "../../Redux/redux-store";
 import {
-    follow, setCurrentPage, setToggleIsFetching,
+    follow, setCurrentPage, setToggleFollowingProgress, setToggleIsFetching,
     setUsers, setUsersTotalCount,
     unFollow, UserType
 } from "../../Redux/UsersReducer";
@@ -21,6 +21,7 @@ type mapStateToPropsType = {
     currentPage: number
     totalCount: number
     isFetching: boolean
+    followingInProgress: Array<any>
 }
 
 
@@ -33,7 +34,8 @@ let mapStateToProps = (state: AppStateType): mapStateToPropsType => {
         pageSize: state.usersPage.pageSize,
         totalCount: state.usersPage. totalCount,
         currentPage: state.usersPage. currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        followingInProgress: state.usersPage.followingInProgress
     }
 }
 /*
@@ -109,6 +111,8 @@ class UsersAPIComponent extends React.Component<UsersPropsType> {
                     users={this.props.users}
                     follow={this.props.follow}
                     unfollow={this.props.unFollow}
+                    setToggleFollowingProgress={this.props.setToggleFollowingProgress}
+                    followingInProgress={this.props.followingInProgress}
             />
             </>
         )
@@ -123,6 +127,7 @@ type mapDispatchToPropsType = {
     setCurrentPage: (currentPage: number) => void
     setTotalUsersCount: (totalCount: number) => void
     toggleIsFetching: (isFetching: boolean) => void
+    setToggleFollowingProgress: (isFetching: boolean, userId: number) => void
 
 }
 export default connect<mapStateToPropsType, mapDispatchToPropsType, {}, AppStateType>(mapStateToProps,
@@ -133,5 +138,6 @@ export default connect<mapStateToPropsType, mapDispatchToPropsType, {}, AppState
         setCurrentPage,
         setTotalUsersCount: setUsersTotalCount,
         toggleIsFetching: setToggleIsFetching,
+        setToggleFollowingProgress,
     }
    ) (UsersAPIComponent);
