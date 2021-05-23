@@ -151,7 +151,7 @@ export const getUsers = (currentPage: number, pageSize: number) => {
     }
 }
 
-export const follow = (userId: any) => {
+export const follow = (userId: number) => {
     return (dispatch: any) => {
         dispatch( setToggleFollowingProgress(true, userId));
         usersAPI.follow(userId)
@@ -170,7 +170,7 @@ export const follow = (userId: any) => {
     }
 }
 
-export const unfollow = (userId: any) => {
+export const unfollow = (userId: number) => {
     return (dispatch: any) => {
         dispatch( setToggleFollowingProgress(true, userId));
         usersAPI.unfollow(userId)

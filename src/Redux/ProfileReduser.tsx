@@ -1,3 +1,4 @@
+import {usersAPI} from "../Api/api";
 
 
 type addPostACType ={
@@ -74,4 +75,11 @@ export const setUserProfile = (profile: any):setUserProfileACType => ({
     type: 'SET-USER-PROFILE',
     profile: profile
 } as const)
+
+export const getUserProfile = (userId: number) => (dispatch: any) => {
+    usersAPI.getProfile(userId).then(response => {
+       dispatch (setUserProfile(response.data));
+    })
+}
+
 export default profileReducer;

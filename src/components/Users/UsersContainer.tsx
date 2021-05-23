@@ -119,7 +119,7 @@ type mapDispatchToPropsType = {
   /*  setTotalUsersCount: (totalCount: number) => void
     toggleIsFetching: (isFetching: boolean) => void*/
     setToggleFollowingProgress: (isFetching: boolean, userId: number) => void
-    getUsers: any
+    getUsers: (currentPage: number, pageSize: number) => void
 
 }
 export default connect<mapStateToPropsType, mapDispatchToPropsType, {}, AppStateType>(mapStateToProps,
