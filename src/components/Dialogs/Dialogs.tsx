@@ -36,7 +36,7 @@ export default function Dialogs(props: DialogsPropsType) {
         /*props.dispatch(updateNewMessageBodyCreator(body))*/
     }
 
-    if (!props.isAuth ) return <Redirect to={'./login'}/>
+  /*  if (!props.isAuth ) return <Redirect to={'./login'}/>*/
 
     return (
         <div className={h.dialogs}>
