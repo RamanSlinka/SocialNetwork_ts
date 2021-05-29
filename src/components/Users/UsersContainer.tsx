@@ -2,14 +2,11 @@ import React from "react";
 import {connect} from "react-redux";
 import {AppStateType} from "../../Redux/redux-store";
 import {
-    followSuccess, setCurrentPage, setToggleFollowingProgress, toggleIsFetching,
-    setUsers, setTotalUsersCount,
-    unfollowSuccess, UserType, getUsers
+    followSuccess, setCurrentPage, setToggleFollowingProgress,
+      unfollowSuccess, UserType, getUsers
 } from "../../Redux/UsersReducer";
-import axios from "axios";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
-import {usersAPI} from "../../Api/api";
 import {withAuthRedirect} from "../Hoc/withAuthRedirect";
 import {compose} from "redux";
 

@@ -2,7 +2,7 @@ import React from "react";
 
 import {
     DialogType,
-    initialStateType, MessageType,
+     MessageType,
     sendMessageCreator,
     updateNewMessageBodyCreator
 } from "../../Redux/DialogsReduser";
