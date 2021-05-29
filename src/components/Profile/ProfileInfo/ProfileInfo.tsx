@@ -20,7 +20,7 @@ export default function ProfileInfo(props: any) {
                 <img src={props.profile.photos.large} className={p.avatar} />
               {/* <img src="https://avatarko.ru/img/kartinka/5/kot_ochki_4754.jpg"
               alt="avatar" className={p.avatar}/>*/}
-                <ProfileStatus />
+                <ProfileStatus status={'Hey, i am fine :) Are you?  '}/>
             </div>
         </div>
     );
