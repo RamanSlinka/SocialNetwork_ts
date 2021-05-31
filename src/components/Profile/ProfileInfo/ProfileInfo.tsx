@@ -4,6 +4,12 @@ import Preloader from "../../Common/Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
 
 
+type ProfileInfoPropsType = {
+    profile: any
+    status: string
+    updateStatus: any
+}
+
 export default function ProfileInfo(props: any) {
     if (!props.profile) {
         return <Preloader/>
@@ -20,7 +26,10 @@ export default function ProfileInfo(props: any) {
                 <img src={props.profile.photos.large} className={p.avatar} />
               {/* <img src="https://avatarko.ru/img/kartinka/5/kot_ochki_4754.jpg"
               alt="avatar" className={p.avatar}/>*/}
-                <ProfileStatus status={'Hey, i am fine :) Are you?  '}/>
+                <ProfileStatus
+                    status={props.status}
+                    updateStatus={props.updateStatus}
+                />
             </div>
         </div>
     );
