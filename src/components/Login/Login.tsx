@@ -7,35 +7,37 @@ type FormDateType = {
     remember: boolean
 }
 
-const LoginForm: React.FC<InjectedFormProps<FormDateType>> = (props: ...) => {
+const LoginForm: React.FC<InjectedFormProps<FormDateType>> = (props:
+...) =>
+{
     return (
 
-            <form onSubmit={props.handleSubmit} >
-                <div>
-                    <Field placeholder={'Login'}  name={'login'} component={'input'}/>
-                </div>
-                <div>
-                    <Field placeholder={'Password'}  name={'password'} component={'input'}/>
-                </div>
-                <div>
-                    <Field  component={'input'} name={'remember'} type={'checkbox'}/> remember
-                </div>
-                <div>
-                    <button>Login</button>
-                </div>
-            </form>
+        <form onSubmit={props.handleSubmit}>
+            <div>
+                <Field placeholder={'Login'} name={'login'} component={'input'}/>
+            </div>
+            <div>
+                <Field placeholder={'Password'} name={'password'} component={'input'}/>
+            </div>
+            <div>
+                <Field component={'input'} name={'remember'} type={'checkbox'}/> remember
+            </div>
+            <div>
+                <button>Login</button>
+            </div>
+        </form>
 
-            )
+    )
 }
 
-const LoginReduxForm = reduxForm ({
+const LoginReduxForm = reduxForm<FormDateType>({
     form: 'login'
-}) (LoginForm)
+})(LoginForm)
 
 const Login = () => {
 
     const onSubmit = (formData: FormDateType) => {
-
+        console.log(formData)
     }
 
     return (
