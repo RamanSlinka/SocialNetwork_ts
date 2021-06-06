@@ -1,9 +1,9 @@
 import React from 'react';
 
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../Redux/ProfileReduser";
+import {addPostActionCreator} from "../../../Redux/ProfileReduser";
 import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
-import {initialStateType} from "../../../Redux/DialogsReduser";
+import {dialogPagetype} from "../../../Redux/DialogsReduser";
 import {Dispatch} from "redux";
 import {AppStateType} from "../../../Redux/redux-store";
 /*
@@ -50,29 +50,29 @@ type PostsType = {
 }
 type mapStateToPropsType = {
     posts: Array<PostsType>
-    newPostText: string
+   /* newPostText: string*/
 }
 
 type mapDispatchToPropsType = {
-    updateNewPostText: (text: string) => void
-    addPost: () => void
+   /* updateNewPostText: (text: string) => void*/
+    addPost: (newPostText: string) => void
 }
 export type MyPostsType = mapStateToPropsType & mapDispatchToPropsType;
 
 const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
     return {
         posts: state.profilePage.posts,
-        newPostText: state.profilePage.newPostText
+       /* newPostText: state.profilePage.newPostText*/
     }
 }
 
 const mapDispatchToProps = (dispatch: Dispatch ): mapDispatchToPropsType => {
     return {
-        updateNewPostText: (text: string) => {
-            dispatch(updateNewPostTextActionCreator(text))
-        },
-        addPost: () => {
-            dispatch(addPostActionCreator())
+       /* updateNewPostText: (text: string) => {
+            dispatch((text))
+        },*/
+        addPost: (newPostText) => {
+            dispatch(addPostActionCreator(newPostText))
         }
     }
 }

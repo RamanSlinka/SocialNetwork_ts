@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {AppStateType} from "../../Redux/redux-store";
 import {
     followSuccess, setCurrentPage, setToggleFollowingProgress,
-      unfollowSuccess, UserType, getUsers
+    unfollowSuccess, UserType, getUsers, follow, unfollow
 } from "../../Redux/UsersReducer";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
@@ -126,8 +126,8 @@ export default compose<React.ComponentType>(
     withAuthRedirect,
     connect<mapStateToPropsType, mapDispatchToPropsType, {}, AppStateType>(mapStateToProps,
         {
-            follow: followSuccess,
-            unFollow: unfollowSuccess,
+            follow,
+            unFollow: unfollow,
             setCurrentPage,
             setToggleFollowingProgress,
             getUsers

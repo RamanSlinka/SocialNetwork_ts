@@ -64,7 +64,7 @@ let Users = (props: OnPageChangedType) => {
                                 </NavLink>
                         </div>
                         <div>
-                            {u.followed
+                            {!u.followed
                                 ? <button
                                     disabled={props.followingInProgress.some(id => id === u.id)}
                                     onClick={() => {

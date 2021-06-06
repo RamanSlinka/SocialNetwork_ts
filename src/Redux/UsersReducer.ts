@@ -1,4 +1,5 @@
 import {usersAPI} from "../Api/api";
+import {Dispatch} from "redux";
 
 
 type FollowACType = {
@@ -152,7 +153,7 @@ export const getUsers = (currentPage: number, pageSize: number) => {
 }
 
 export const follow = (userId: number) => {
-    return (dispatch: any) => {
+    return (dispatch: Dispatch) => {
         dispatch( setToggleFollowingProgress(true, userId));
         usersAPI.follow(userId)
             /*  axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
@@ -171,7 +172,7 @@ export const follow = (userId: number) => {
 }
 
 export const unfollow = (userId: number) => {
-    return (dispatch: any) => {
+    return (dispatch: Dispatch) => {
         dispatch( setToggleFollowingProgress(true, userId));
         usersAPI.unfollow(userId)
             /*  axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {

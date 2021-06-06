@@ -7,9 +7,7 @@ type FormDateType = {
     remember: boolean
 }
 
-const LoginForm: React.FC<InjectedFormProps<FormDateType>> = (props:
-...) =>
-{
+const LoginForm: React.FC<InjectedFormProps<FormDateType>> = (props) => {
     return (
 
         <form onSubmit={props.handleSubmit}>
@@ -35,10 +33,7 @@ const LoginReduxForm = reduxForm<FormDateType>({
 })(LoginForm)
 
 const Login = () => {
-
-    const onSubmit = (formData: FormDateType) => {
-        console.log(formData)
-    }
+    const onSubmit = (formData: FormDateType) => {console.log(formData)}
 
     return (
         <div>

@@ -1,8 +1,9 @@
 import {profileAPI, usersAPI} from "../Api/api";
 
 
-type addPostACType ={
+type addPostACType = {
     type: 'ADD-POST'
+    newPostText: string
 }
 type updateNewPostTextACType = {
     type: 'UPDATE-NEW-POST-TEXT'
@@ -29,7 +30,6 @@ export type PostsType = {
 
 export type initialStateType = {
     posts: Array<PostsType>
-    newPostText: string
     profile: any
     status: string
 }
@@ -39,7 +39,6 @@ let initialState: initialStateType = {
         {id: 1, message: 'Hi, how are you ?', likesCount: 12},
         {id: 2, message: "It's my firs post", likesCount: 11}
     ],
-    newPostText: 'random text',
     profile: null,
     status: ''
 }
@@ -50,21 +49,21 @@ const profileReducer = (state: initialStateType
         case 'ADD-POST': {
             let newPost = {
                 id: 6,
-                message: state.newPostText,
+                message: action.newPostText,
                 likesCount: 0
             };
             return {
                 ...state,
                 posts: [...state.posts, newPost],
-                newPostText: ''
+               /* newPostText: ''*/
             };
         }
-        case 'UPDATE-NEW-POST-TEXT': {
-            return {
-                ...state,
-                newPostText: action.newText
-            }
-        }
+        /*   case 'UPDATE-NEW-POST-TEXT': {
+               return {
+                   ...state,
+                   newPostText: action.newText
+               }
+           }*/
         case "SET-USER-PROFILE" : {
             return {...state, profile: action.profile}
         }
@@ -76,19 +75,19 @@ const profileReducer = (state: initialStateType
     }
 }
 
-export const addPostActionCreator = ():addPostACType  => ({
-    type: 'ADD-POST'
+export const addPostActionCreator = (newPostText: string): addPostACType => ({
+    type: 'ADD-POST', newPostText
 } as const)
 
-export const updateNewPostTextActionCreator = (text: string):updateNewPostTextACType => ({
+/*export const updateNewPostTextActionCreator = (text: string): updateNewPostTextACType => ({
     type: 'UPDATE-NEW-POST-TEXT',
     newText: text
-} as const)
-export const setUserProfile = (profile: any):setUserProfileACType => ({
+} as const)*/
+export const setUserProfile = (profile: any): setUserProfileACType => ({
     type: 'SET-USER-PROFILE',
     profile: profile
 } as const)
-export const setStatus = (status: string):setStatusACType => ({
+export const setStatus = (status: string): setStatusACType => ({
     type: 'SET-STATUS',
     status: status
 } as const)
@@ -96,23 +95,24 @@ export const setStatus = (status: string):setStatusACType => ({
 export const getUserProfile = (userId: number) => (dispatch: any) => {
     usersAPI.getProfile(userId)
         .then(response => {
-       dispatch (setUserProfile(response.data));
-    })
+            dispatch(setUserProfile(response.data));
+        })
 }
 export const getStatus = (userId: number) => (dispatch: any) => {
     profileAPI.getStatus(userId)
         .then(response => {
-       dispatch (setStatus(response.data));
-    })
+            dispatch(setStatus(response.data));
+        })
 }
-export const updateStatus = (status: string ) => (dispatch: any) => {
+export const updateStatus = (status: string) => (dispatch: any) => {
 
-    // @ts-ignore
-    profileAPI.getStatus(status)
+
+
+    profileAPI.updateStatus(status)
         .then(response => {
-            if(response.data.resultCode === 0) {
-       dispatch (setStatus(status));
-    }
+            if (response.data.resultCode === 0) {
+                dispatch(setStatus(status));
+            }
         })
 }
 
