@@ -2,9 +2,8 @@ import React from "react";
 import styles from "./users.module.css";
 import userPhoto from "../../assets/images/user.png";
 import {NavLink} from "react-router-dom";
-import {setToggleFollowingProgress, UserType} from "../../Redux/UsersReducer";
-import axios from "axios";
-import {usersAPI} from "../../Api/api";
+import { UserType} from "../../Redux/UsersReducer";
+
 
 
 type OnPageChangedType = {

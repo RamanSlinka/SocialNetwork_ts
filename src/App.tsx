@@ -15,7 +15,7 @@ import Login from "./components/Login/Login";
 
 
 
-const App/*: React.FC<AppPropsType>*/ = (/*props*/) => {
+const App/*: React.FC<AppPropsType>*/ = () => {
 
     return (
 
