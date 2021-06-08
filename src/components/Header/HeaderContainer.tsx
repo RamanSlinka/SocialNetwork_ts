@@ -1,9 +1,9 @@
 import React from 'react';
 import Header from './Header';
-import axios from "axios";
 import {connect} from "react-redux";
-import {getAuthUserData} from "../../Redux/AuthReducer";
+import {getAuthUserData, logout} from "../../Redux/AuthReducer";
 import {AppStateType} from "../../Redux/redux-store";
+
 
 
 
@@ -36,4 +36,4 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
     login: state.auth.login
 })
 
-export default connect(mapStateToProps, {getAuthUserData})(HeaderContainer);
+export default connect(mapStateToProps, {getAuthUserData, logout})(HeaderContainer);
