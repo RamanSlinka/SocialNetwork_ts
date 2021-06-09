@@ -4,7 +4,6 @@ import dialogsReducer from "./DialogsReduser";
 import usersReducer from "./UsersReducer";
 import authReducer from "./AuthReducer";
 import  thunkMiddleware from "redux-thunk";
-/*import { formReducer} from "redux-form"*/
 import { reducer as formReducer } from 'redux-form'
 
 

@@ -3,9 +3,10 @@ import {Field, InjectedFormProps, reduxForm} from 'redux-form';
 import { Input } from '../Common/FormsControls/FormsControls';
 import {required} from "../../Utils/Validators/validators";
 import {connect} from "react-redux";
-import {initialStateType, login} from "../../Redux/AuthReducer";
+import { login} from "../../Redux/AuthReducer";
 import {Redirect} from "react-router-dom";
 import {AppStateType} from "../../Redux/redux-store";
+import s from './../Common/FormsControls/FormsControls.module.css'
 
 type FormDateType = {
     email: string
@@ -30,6 +31,8 @@ const LoginForm: React.FC<InjectedFormProps<FormDateType>> = (props) => {
             <div>
                 <Field component={Input} name={'remember'} type={'checkbox'}/> remember
             </div>
+
+            {props.error && <div className={s.formSummaryError}>{props.error}</div>}
             <div>
                 <button>Login</button>
             </div>

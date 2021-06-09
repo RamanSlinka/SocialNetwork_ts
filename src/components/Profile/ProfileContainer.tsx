@@ -8,14 +8,17 @@ import {compose} from "redux";
 
 
 type PathParamsType = {
-    userId: string
+    userId: string | number | null
 }
 
+// @ts-ignore
 type PropsType = RouteComponentProps<PathParamsType> & OwnPropsType
 
 type MapStatePropsType = {
     profile: any
     status: string
+    authorizedUserId:  string | number | null
+    isAuth: boolean
 
 }
 
@@ -32,7 +35,7 @@ class ProfileContainer extends React.Component<PropsType> {
     componentDidMount() {
         let userId = this.props.match.params.userId;
         if (!userId) {
-            userId = '2';
+            userId = this.props.authorizedUserId;
         }
         this.props.getUserProfile(userId);
         this.props.getStatus(userId);
@@ -54,7 +57,9 @@ class ProfileContainer extends React.Component<PropsType> {
 
 let mapStateToProps = (state: AppStateType): MapStatePropsType => ({
     profile: state.profilePage.profile,
-    status: state.profilePage.status
+    status: state.profilePage.status,
+    authorizedUserId: state.auth.userId,
+    isAuth: state.auth.isAuth
 })
 
 

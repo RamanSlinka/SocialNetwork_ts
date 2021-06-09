@@ -1,13 +1,14 @@
 import {authAPI} from "../Api/api";
 import {Dispatch} from "redux";
+import {stopSubmit} from "redux-form";
 
 
 type SetUserDataACType = {
     type: 'SET_USER_DATE'
     payload: {
-        userId: string | number | null
-        email: string
-        login: string
+        userId:  number  | null
+        email: string | null
+        login: string | null
         isAuth: boolean
     }
 }
@@ -39,16 +40,14 @@ const authReducer =
                 return {
                     ...state,
                     ...action.payload
-
                 }
-
             default:
                 return state;
         }
     }
 
 
-export const setAuthUserData = (userId: number, email: string, login: string, isAuth: boolean): SetUserDataACType =>
+export const setAuthUserData = (userId: number | null, email: string | null, login: string | null, isAuth: boolean): SetUserDataACType =>
     ({type: 'SET_USER_DATE', payload: {userId, email, login, isAuth}} as const)
 
 export const getAuthUserData = () => (dispatch: Dispatch) => {
@@ -61,11 +60,17 @@ export const getAuthUserData = () => (dispatch: Dispatch) => {
         })
 }
 
-export const login = (email: string, password: string, remember: boolean) => (dispatch: Dispatch) => {
+export const login = (email: string, password: string, remember: boolean) => (dispatch: any) => {
+
+
+
     authAPI.login(email, password, remember)
         .then(response => {
             if (response.data.resultCode === 0) {
                 dispatch(getAuthUserData())
+                 } else  {
+                let message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error';
+                dispatch(stopSubmit('login', {_error: message}))
             }
         })
 }
