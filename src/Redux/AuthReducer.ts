@@ -1,6 +1,6 @@
 import {authAPI} from "../Api/api";
-import {Dispatch} from "redux";
 import {stopSubmit} from "redux-form";
+import {AppThunkType} from "./redux-store";
 
 
 type SetUserDataACType = {
@@ -14,7 +14,7 @@ type SetUserDataACType = {
 }
 
 
-type ActionType = SetUserDataACType
+export type ActionTypeAuthReducer = SetUserDataACType
 
 
 let initialState: initialStateType = {
@@ -33,7 +33,7 @@ export type initialStateType = {
 }
 
 const authReducer =
-    (state: initialStateType = initialState, action: ActionType): initialStateType => {
+    (state: initialStateType = initialState, action: ActionTypeAuthReducer): initialStateType => {
 
         switch (action.type) {
             case 'SET_USER_DATE':
@@ -50,8 +50,8 @@ const authReducer =
 export const setAuthUserData = (userId: number | null, email: string | null, login: string | null, isAuth: boolean): SetUserDataACType =>
     ({type: 'SET_USER_DATE', payload: {userId, email, login, isAuth}} as const)
 
-export const getAuthUserData = () => (dispatch: Dispatch) => {
-    authAPI.me()
+export const getAuthUserData = (): AppThunkType => (dispatch) => {
+   return  authAPI.me()
         .then(response => {
             if (response.data.resultCode === 0) {
                 let {id, login, email} = response.data.data;
@@ -60,10 +60,7 @@ export const getAuthUserData = () => (dispatch: Dispatch) => {
         })
 }
 
-export const login = (email: string, password: string, remember: boolean) => (dispatch: any) => {
-
-
-
+export const login = (email: string, password: string, remember: boolean): AppThunkType => (dispatch) => {
     authAPI.login(email, password, remember)
         .then(response => {
             if (response.data.resultCode === 0) {
@@ -75,7 +72,7 @@ export const login = (email: string, password: string, remember: boolean) => (di
         })
 }
 
-export const logout = () => (dispatch: Dispatch) => {
+export const logout = () : AppThunkType => (dispatch) => {
     authAPI.logout()
         .then(response => {
             if (response.data.resultCode === 0) {

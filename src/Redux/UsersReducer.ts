@@ -1,5 +1,6 @@
 import {usersAPI} from "../Api/api";
 import {Dispatch} from "redux";
+import {AppThunkType} from "./redux-store";
 
 
 type FollowACType = {
@@ -33,7 +34,7 @@ type setToggleIsFollowingProgressACType = {
     userId: number
 }
 
-type ActionType = FollowACType | UnFollowACType
+export type ActionTypeUserReducer = FollowACType | UnFollowACType
     | SetUsersACType | SetCurrentPageACType | SetUsersTotalCountACType |
     setToggleIsFetchingACType | setToggleIsFollowingProgressACType
 
@@ -76,7 +77,7 @@ export type initialStateType = {
 }
 
 const usersReducer =
-    (state: initialStateType = initialState, action: ActionType): initialStateType => {
+    (state: initialStateType = initialState, action: ActionTypeUserReducer): initialStateType => {
 
         switch (action.type) {
             case 'FOLLOW':
@@ -152,8 +153,8 @@ export const getUsers = (currentPage: number, pageSize: number) => {
     }
 }
 
-export const follow = (userId: number) => {
-    return (dispatch: Dispatch) => {
+export const follow = (userId: number): AppThunkType => {
+    return (dispatch) => {
         dispatch( setToggleFollowingProgress(true, userId));
         usersAPI.follow(userId)
             /*  axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
@@ -171,8 +172,8 @@ export const follow = (userId: number) => {
     }
 }
 
-export const unfollow = (userId: number) => {
-    return (dispatch: Dispatch) => {
+export const unfollow = (userId: number): AppThunkType => {
+    return (dispatch) => {
         dispatch( setToggleFollowingProgress(true, userId));
         usersAPI.unfollow(userId)
             /*  axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {

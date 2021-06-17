@@ -1,5 +1,6 @@
 import {profileAPI, usersAPI} from "../Api/api";
 import {Dispatch} from "redux";
+import {AppThunkType} from "./redux-store";
 
 
 type addPostACType = {
@@ -18,7 +19,7 @@ type setStatusACType = {
     type: 'SET-STATUS'
     status: string
 }
-type ActionType = addPostACType |
+export type ActionTypeProfileReducer = addPostACType |
     updateNewPostTextACType |
     setUserProfileACType |
     setStatusACType
@@ -45,7 +46,7 @@ let initialState: initialStateType = {
 }
 
 const profileReducer = (state: initialStateType
-                            = initialState, action: ActionType): initialStateType => {
+                            = initialState, action: ActionTypeProfileReducer): initialStateType => {
     switch (action.type) {
         case 'ADD-POST': {
             let newPost = {
@@ -84,21 +85,19 @@ export const setStatus = (status: string): setStatusACType => ({
     status: status
 } as const)
 
-export const getUserProfile = (userId: number) => (dispatch: Dispatch) => {
+export const getUserProfile = (userId: number): AppThunkType => (dispatch) => {
     usersAPI.getProfile(userId)
         .then(response => {
             dispatch(setUserProfile(response.data));
         })
 }
-export const getStatus = (userId: number) => (dispatch: Dispatch) => {
+export const getStatus = (userId: number) : AppThunkType=> (dispatch) => {
     profileAPI.getStatus(userId)
         .then(response => {
             dispatch(setStatus(response.data));
         })
 }
-export const updateStatus = (status: string) => (dispatch: Dispatch) => {
-
-
+export const updateStatus = (status: string): AppThunkType => (dispatch) => {
     profileAPI.updateStatus(status)
         .then(response => {
             if (response.data.resultCode === 0) {

@@ -10,16 +10,13 @@ import  {Provider} from "react-redux";
 
 
 
-/* let rerenderEntireTree = () => {*/
+
 
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
                 <Provider  store={store}>
-                <App
-                    /*store={store.getState()} dispatch={store.dispatch.bind(store)*/
-                    /* updateNewPostText={store.updateNewPostText.bind(store)}*/
-                />
+                <App />
                 </Provider>
             </BrowserRouter>
 
@@ -28,5 +25,5 @@ import  {Provider} from "react-redux";
     );
 
 
-/*rerenderEntireTree();*/
+
 

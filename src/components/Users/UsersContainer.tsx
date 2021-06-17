@@ -87,7 +87,7 @@ class UsersContainer extends React.Component<UsersPropsType> {
                        onPageChanged={this.onPageChanged}
                        users={this.props.users}
                        follow={this.props.follow}
-                       unfollow={this.props.unFollow}
+                       unfollow={this.props.unfollow}
                     /*   setToggleFollowingProgress={this.props.setToggleFollowingProgress}*/
                        followingInProgress={this.props.followingInProgress}
                 />
@@ -99,11 +99,8 @@ class UsersContainer extends React.Component<UsersPropsType> {
 
 type mapDispatchToPropsType = {
     follow: (userId: number) => void
-    unFollow: (userId: number) => void
-    /*setUsers: (users:Array<UserType>) => void*/
+    unfollow: (userId: number) => void
     setCurrentPage: (currentPage: number) => void
-    /*  setTotalUsersCount: (totalCount: number) => void
-      toggleIsFetching: (isFetching: boolean) => void*/
     setToggleFollowingProgress: (isFetching: boolean, userId: number) => void
     getUsers: (currentPage: number, pageSize: number) => void
 
@@ -111,11 +108,10 @@ type mapDispatchToPropsType = {
 
 
 export default compose<React.ComponentType>(
-    withAuthRedirect,
     connect<mapStateToPropsType, mapDispatchToPropsType, {}, AppStateType>(mapStateToProps,
         {
             follow,
-            unFollow: unfollow,
+            unfollow,
             setCurrentPage,
             setToggleFollowingProgress,
             getUsers

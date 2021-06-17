@@ -6,7 +6,7 @@ type sendMessageACType = {
     type: 'SEND-MESSAGE'
     newMessageBody: string
 }
-type ActionType =  sendMessageACType
+export type ActionTypeDialogReducer =  sendMessageACType
 
 export type DialogType = {
     id: number
@@ -17,7 +17,7 @@ export type MessageType = {
     message: string
 }
 
-export type dialogPagetype = typeof initialState
+export type dialogPageType = typeof initialState
 
 let initialState = {
     dialogs: [
@@ -34,8 +34,8 @@ let initialState = {
     ] as Array<MessageType>
 }
 
-const dialogsReducer = (state: dialogPagetype = initialState,
-                        action: ActionType): dialogPagetype => {
+const dialogsReducer = (state: dialogPageType = initialState,
+                        action: ActionTypeDialogReducer): dialogPageType => {
 
     switch (action.type) {
        /* case 'UPDATE-NEW-MESSAGE-BODY':

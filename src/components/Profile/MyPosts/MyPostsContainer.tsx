@@ -3,7 +3,7 @@ import React from 'react';
 import {addPostActionCreator} from "../../../Redux/ProfileReduser";
 import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
-import {dialogPagetype} from "../../../Redux/DialogsReduser";
+import {dialogPageType} from "../../../Redux/DialogsReduser";
 import {Dispatch} from "redux";
 import {AppStateType} from "../../../Redux/redux-store";
 /*

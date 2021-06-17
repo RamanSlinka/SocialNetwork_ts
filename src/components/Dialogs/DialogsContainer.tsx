@@ -1,5 +1,5 @@
 import React from "react";
-import {dialogPagetype, sendMessageCreator} from "../../Redux/DialogsReduser";
+import {dialogPageType, sendMessageCreator} from "../../Redux/DialogsReduser";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {compose, Dispatch} from "redux";
@@ -53,7 +53,7 @@ dispatch: (action: ActionTypes) => void*/
    /!* newMessageBody: string*!/
 }*/
 type mapStateToPropsType = {
-    dialogsPage: dialogPagetype
+    dialogsPage: dialogPageType
    /* newMessageBody: string*/
 }
 type mapDispatchToPropsType = {
