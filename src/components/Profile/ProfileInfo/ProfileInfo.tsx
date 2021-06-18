@@ -2,6 +2,7 @@ import React from "react";
 import p from "../Profile.module.css";
 import Preloader from "../../Common/Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 
 type ProfileInfoPropsType = {
@@ -26,7 +27,7 @@ export default function ProfileInfo(props: any) {
                 <img src={props.profile.photos.large} className={p.avatar} />
               {/* <img src="https://avatarko.ru/img/kartinka/5/kot_ochki_4754.jpg"
               alt="avatar" className={p.avatar}/>*/}
-                <ProfileStatus
+                <ProfileStatusWithHooks
                     status={props.status}
                     updateStatus={props.updateStatus}
                 />
