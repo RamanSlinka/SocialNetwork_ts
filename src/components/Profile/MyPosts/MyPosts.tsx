@@ -15,18 +15,16 @@ import {Textarea} from "../../Common/FormsControls/FormsControls";
     addPost: () => void
 }*/
 
-export default function MyPosts(props: MyPostsType) {
+ const  MyPosts = React.memo((props: MyPostsType) => {
 
-    let postsElements =
+       let postsElements =
         props.posts.map(post =>
             <Post message={post.message}
                   likesCount={post.likesCount}
                   id={post.id}/>);
 
 
-    let onAddPost = (values: any) => {
-        props.addPost(values.newPostText);
-    }
+    let onAddPost = (values: any) => {props.addPost(values.newPostText)}
 
 
     return (
@@ -36,7 +34,11 @@ export default function MyPosts(props: MyPostsType) {
             {postsElements}
         </div>
     );
-}
+})
+
+
+export default MyPosts
+
 
 type FormType = {
     newPostText: string
