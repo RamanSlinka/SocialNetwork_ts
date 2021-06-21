@@ -19,10 +19,15 @@ type setStatusACType = {
     type: 'SET-STATUS'
     status: string
 }
+
+type deletePostACType = {
+    type: 'DELETE_POST'
+    postId: number
+}
 export type ActionTypeProfileReducer = addPostACType |
     updateNewPostTextACType |
     setUserProfileACType |
-    setStatusACType
+    setStatusACType | deletePostACType
 
 export type PostsType = {
     id: number
@@ -66,6 +71,9 @@ const profileReducer = (state: initialStateType
         case "SET-STATUS" : {
             return {...state, status: action.status}
         }
+        case "DELETE_POST" : {
+            return {...state, posts: state.posts.filter(p=> p.id != action.postId)}
+        }
         default:
             return state
     }
@@ -84,6 +92,9 @@ export const setStatus = (status: string): setStatusACType => ({
     type: 'SET-STATUS',
     status: status
 } as const)
+
+export const deletePost = (postId: number): deletePostACType => ({
+    type: 'DELETE_POST', postId} as const)
 
 export const getUserProfile = (userId: number): AppThunkType => (dispatch) => {
     usersAPI.getProfile(userId)
