@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
 import NavBar from './components/NavBar/NavBar'
 import Settings from "./components/Settings/Settings";

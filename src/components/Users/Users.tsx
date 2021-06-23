@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./users.module.css";
 import userPhoto from "../../assets/images/user.png";
 import {NavLink} from "react-router-dom";
-import { UserType} from "../../Redux/UsersReducer";
-
+import {UserType} from "../../Redux/UsersReducer";
+import Paginator from "../Common/Paginator/Paginator";
 
 
 type OnPageChangedType = {
@@ -22,11 +22,7 @@ type OnPageChangedType = {
 }
 
 let Users = (props: OnPageChangedType) => {
-    let pagesCount = Math.ceil(props.totalCount / props.pageSize)
-    let pages = []
-    for (let i = 1; i <= 30 /*pagesCount*/; i++) {
-        pages.push(i)
-    }
+
 
 
 //  нашёл функцию для пагинации ! как применить ?
@@ -41,18 +37,11 @@ let Users = (props: OnPageChangedType) => {
 
     return (
         <div>
-            <div>
-                {pages.map(p => {
-                    return <span
-
-                        className={props.currentPage === p ? styles.selectedPage : ""}
-                        onClick={(e) => {
-
-                            props.onPageChanged(p)
-                        }}
-                    > {p} </span>
-                })}
-            </div>
+            <Paginator pageSize={props.pageSize}
+                       currentPage={props.currentPage}
+                       totalCount={props.totalCount}
+                       onPageChanged={props.onPageChanged}
+            />
             {
                 props.users.map(u => <div key={u.id}>
                     <span>
@@ -67,11 +56,13 @@ let Users = (props: OnPageChangedType) => {
                                 ? <button
                                     disabled={props.followingInProgress.some(id => id === u.id)}
                                     onClick={() => {
-                                    props.follow(u.id)}}>follow</button>
+                                        props.follow(u.id)
+                                    }}>follow</button>
                                 : <button
                                     disabled={props.followingInProgress.some(id => id === u.id)}
                                     onClick={() => {
-                                    props.unfollow(u.id)}}
+                                        props.unfollow(u.id)
+                                    }}
                                 >Unfollow</button>}
 
                         </div>
