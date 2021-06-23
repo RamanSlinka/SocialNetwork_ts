@@ -141,54 +141,43 @@ export const toggleIsFetching = (isFetching: boolean): setToggleIsFetchingACType
 export const setToggleFollowingProgress = (isFetching: boolean, userId: number): setToggleIsFollowingProgressACType =>
     ({type: 'TOGGLE_IS_FOLLOWING_PROGRESS', isFetching, userId} as const)
 
+
 export const requestUsers = (page: number, pageSize: number) => {
-    return (dispatch: Dispatch) => {
+    return async (dispatch: Dispatch) => {
         dispatch(toggleIsFetching(true))
         dispatch(setCurrentPage(page))
 
-        usersAPI.getUsers(page, pageSize).then(data => {
-            dispatch(toggleIsFetching(false))
-            dispatch(setUsers(data.items))
-            dispatch(setTotalUsersCount(data.totalCount))
-        })
+        let data = await usersAPI.getUsers(page, pageSize);
+        dispatch(toggleIsFetching(false))
+        dispatch(setUsers(data.items))
+        dispatch(setTotalUsersCount(data.totalCount))
     }
 }
 
+
+const followUnfollowFlow = async (dispatch: Dispatch,
+                                  userId: number,
+                                  apiMethod: any,
+                                  actionCreator: any) => {
+    dispatch(setToggleFollowingProgress(true, userId));
+    let response = await apiMethod(userId)
+
+    if (response.data.resultCode === 0) {
+        dispatch(actionCreator(userId))
+    }
+    dispatch(setToggleFollowingProgress(false, userId));
+}
+
 export const follow = (userId: number): AppThunkType => {
-    return (dispatch) => {
-        dispatch( setToggleFollowingProgress(true, userId));
-        usersAPI.follow(userId)
-            /*  axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                  withCredentials: true,
-                  headers: {
-                      'API-KEY': '3d0e16a8-fd7d-4f04-a847-cacf5931e58d'
-                  }
-              })*/
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(followSuccess(userId))
-                }
-                dispatch(setToggleFollowingProgress(false, userId));
-            })
+    return async (dispatch) => {
+        followUnfollowFlow(dispatch, userId, usersAPI.follow.bind(usersAPI), followSuccess);
+
     }
 }
 
 export const unfollow = (userId: number): AppThunkType => {
-    return (dispatch) => {
-        dispatch( setToggleFollowingProgress(true, userId));
-        usersAPI.unfollow(userId)
-            /*  axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-                  withCredentials: true,
-                  headers: {
-                      'API-KEY': '3d0e16a8-fd7d-4f04-a847-cacf5931e58d'
-                  }
-              })*/
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(unfollowSuccess(userId))
-                }
-                dispatch(setToggleFollowingProgress(false, userId));
-            })
+    return async (dispatch) => {
+        followUnfollowFlow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), unfollowSuccess);
     }
 }
 
