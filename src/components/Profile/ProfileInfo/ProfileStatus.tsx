@@ -1,13 +1,11 @@
 import React from 'react'
 
-type ProfileStatusPropsType = {
+export type ProfileStatusPropsType = {
     status: string
     updateStatus: any
 }
 
 class ProfileStatus extends React.Component<ProfileStatusPropsType> {
-
-
     state = {
         editMode: false,
         status: this.props.status
@@ -41,7 +39,6 @@ class ProfileStatus extends React.Component<ProfileStatusPropsType> {
 
     render() {
         return (
-
             <div>Status:
                 {!this.state.editMode &&
                 <div>
