@@ -24,10 +24,15 @@ type deletePostACType = {
     type: 'DELETE_POST'
     postId: number
 }
+type savePhotoACType = {
+    type:  'SAVE_PHOTO_SUCCESS'
+    photos: string
+}
+
 export type ActionTypeProfileReducer = addPostACType |
     updateNewPostTextACType |
     setUserProfileACType |
-    setStatusACType | deletePostACType
+    setStatusACType | deletePostACType | savePhotoACType
 
 export type PostsType = {
     id: number
@@ -74,6 +79,9 @@ const profileReducer = (state: initialStateType
         case "DELETE_POST" : {
             return {...state, posts: state.posts.filter(p => p.id != action.postId)}
         }
+        case "SAVE_PHOTO_SUCCESS" : {
+            return {...state, profile: {...state.profile, photos: action.photos}}
+        }
         default:
             return state
     }
@@ -97,6 +105,13 @@ export const deletePost = (postId: number): deletePostACType => ({
     type: 'DELETE_POST', postId
 } as const)
 
+export const savePhotoSuccess = (photos: string): savePhotoACType => ({
+    type: 'SAVE_PHOTO_SUCCESS', photos
+} as const)
+
+
+
+//Thunk
 export const getUserProfile = (userId: number): AppThunkType => async (dispatch) => {
     let response = await usersAPI.getProfile(userId)
     dispatch(setUserProfile(response.data));
@@ -109,6 +124,12 @@ export const updateStatus = (status: string): AppThunkType => async (dispatch) =
     let response = await profileAPI.updateStatus(status)
     if (response.data.resultCode === 0) {
         dispatch(setStatus(status));
+    }
+}
+export const savePhoto = (file: string): AppThunkType => async (dispatch) => {
+    let response = await profileAPI.savePhoto(file)
+    if (response.data.resultCode === 0) {
+        dispatch(savePhotoSuccess(response.data.data.photos));
     }
 }
 
