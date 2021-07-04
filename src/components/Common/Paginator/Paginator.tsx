@@ -14,7 +14,7 @@ type OnPageChangedType1 = {
 }
 
 let Paginator: React.FC<OnPageChangedType1> = ({totalItemsCount, pageSize,currentPage, onPageChanged,} ) => {
-    let  portionSize= 10
+    let  portionSize= 20
     let pagesCount = Math.ceil(totalItemsCount / pageSize)
     let pages = []
     for (let i = 1; i <= pagesCount; i++) {
