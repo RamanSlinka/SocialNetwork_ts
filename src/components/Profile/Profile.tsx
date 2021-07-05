@@ -22,6 +22,7 @@ export default function Profile(props: any) {
     return (
         <div>
             <ProfileInfo
+                saveProfile={props.saveProfile}
                 savePhoto={props.savePhoto}
                 isOwner={props.isOwner}
                 profile={props.profile}

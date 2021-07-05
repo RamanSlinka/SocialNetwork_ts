@@ -1,6 +1,6 @@
 import {profileAPI, usersAPI} from "../Api/api";
-import {Dispatch} from "redux";
-import {AppThunkType} from "./redux-store";
+
+import { AppThunkType} from "./redux-store";
 
 
 type addPostACType = {
@@ -112,7 +112,7 @@ export const savePhotoSuccess = (photos: string): savePhotoACType => ({
 
 
 //Thunk
-export const getUserProfile = (userId: number): AppThunkType => async (dispatch) => {
+export const getUserProfile = (userId: number ): AppThunkType => async (dispatch) => {
     let response = await usersAPI.getProfile(userId)
     dispatch(setUserProfile(response.data));
 }
@@ -130,6 +130,14 @@ export const savePhoto = (file: string): AppThunkType => async (dispatch) => {
     let response = await profileAPI.savePhoto(file)
     if (response.data.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.data.photos));
+    }
+}
+export const saveProfile = (profile: any): AppThunkType => async (dispatch, getState) => {
+const userId =  getState().auth.userId;
+       let response = await profileAPI.saveProfile(profile)
+    if (response.data.resultCode === 0) {
+        // @ts-ignore
+        dispatch(getUserProfile(userId));
     }
 }
 
