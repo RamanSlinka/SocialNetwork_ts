@@ -1,6 +1,8 @@
 import React from "react";
 import {CreateField, Input, Textarea} from '../../Common/FormsControls/FormsControls'
 import {InjectedFormProps, reduxForm} from "redux-form";
+import p from "../Profile.module.css";
+import s from "../../Common/FormsControls/FormsControls.module.css";
 
 export type FormDateType = {
     fullName: string
@@ -8,11 +10,12 @@ export type FormDateType = {
     lookingForAJob: boolean
     AboutMe: string
 }
-
-const ProfileDataForm: React.FC<InjectedFormProps<FormDateType>> = ({ handleSubmit}) => {
+//  React.FC<InjectedFormProps<FormDateType>>
+const ProfileDataForm: React.FC<any> = ({ handleSubmit,profile, error}) => {
     return (
         <form onSubmit={handleSubmit}>
                  <div><button>save</button></div>
+            {error && <div className={s.formSummaryError}>{error}</div>}
                 <div>
                     <b>Full name</b>: {CreateField('Full name', 'fullName',
                     [], Input)}
@@ -35,9 +38,12 @@ const ProfileDataForm: React.FC<InjectedFormProps<FormDateType>> = ({ handleSubm
                         [], Textarea)}
                 </div>
                 <div>
-                {/*    <b>Contacts</b>: {Object.keys(profile.contacts).map(key => {*/}
-                {/*    return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>*/}
-                {/*})}*/}
+                   <b>Contacts</b>: {Object.keys(profile.contacts).map(key => {
+                    return <div key={key} className={p.contact}>
+                        <b>{key}: {CreateField(key, 'contacts.' + key,
+                            [], Input)}</b>
+                    </div>
+                })}
                 </div>
 
         </form>

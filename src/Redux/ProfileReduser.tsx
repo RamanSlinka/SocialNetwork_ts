@@ -1,6 +1,7 @@
 import {profileAPI, usersAPI} from "../Api/api";
 
 import { AppThunkType} from "./redux-store";
+import {stopSubmit} from "redux-form";
 
 
 type addPostACType = {
@@ -138,6 +139,9 @@ const userId =  getState().auth.userId;
     if (response.data.resultCode === 0) {
         // @ts-ignore
         dispatch(getUserProfile(userId));
+    } else {
+        dispatch(stopSubmit('edit-profile', {_error: response.data.message[0]}))
+        return Promise.reject( response.data.message[0]);
     }
 }
 

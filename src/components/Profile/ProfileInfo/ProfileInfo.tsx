@@ -30,10 +30,12 @@ export default function ProfileInfo(props: any) {
         }
     }
 
-    const onSubmit = (formData: FormDateType) => {
-        props.saveProfile(formData)
-        setEditMode(false)
-    }
+    const onSubmit = (formData: any) => {
+        props.saveProfile(formData).then(() => {
+            setEditMode(false)  ;
+        })
+     }
+
 
 
     return (
@@ -45,6 +47,7 @@ export default function ProfileInfo(props: any) {
                 {editMode
                     ? <ProfileDataForm
                         initialValues={props.profile}
+                        // @ts-ignore
                         profile={props.profile}
                         onSubmit={onSubmit}
                     />
