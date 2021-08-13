@@ -12,32 +12,26 @@ type ProfileInfoPropsType = {
     updateStatus: any
     isOwner: boolean
     savePhoto: any
+    saveProfile: any
 }
 
 
 export default function ProfileInfo(props: any) {
 
     let [editMode, setEditMode] = useState(false);
-
-
     if (!props.profile) {
         return <Preloader/>
     }
-
     const onMainPhotoSelected = (e: any) => {
         if (e.current.file.length) {
             props.savePhoto(e.current.file[0])
         }
     }
-
     const onSubmit = (formData: any) => {
         props.saveProfile(formData).then(() => {
             setEditMode(false)  ;
         })
      }
-
-
-
     return (
         <div>
             <div className={p.descriptionBlock}>

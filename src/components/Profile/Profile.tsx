@@ -1,6 +1,5 @@
 import React from 'react';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 
@@ -16,6 +15,7 @@ type ProfilePropsType = {
     profile: any
     isOwner: boolean
     savePhoto: any
+    saveProfile: any
 }
 
 export default function Profile(props: any) {
