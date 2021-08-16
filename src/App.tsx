@@ -5,7 +5,7 @@ import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Sidebar from "./components/Sidebar/Sidebar";
-import {Route, withRouter} from 'react-router-dom';
+import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
 import UsersContainer from './components/Users/UsersContainer';
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
@@ -35,6 +35,10 @@ class App extends React.Component<PropsType> {
                 <HeaderContainer/>
                 <NavBar/>
                 <div className='app-wrapper-content'>
+                    <Switch>
+                        <Route exact path='/'
+                               render={() => <Redirect to= {'/profile'}/>}/>
+
                     <Route path='/dialogs'
                            render={() => {
                                return <React.Suspense fallback={<Preloader/>}>
@@ -56,11 +60,15 @@ class App extends React.Component<PropsType> {
                     <Route path='/login'
                            render={() => <Login/>}/>
 
+
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>
                     <Route path='/sidebar' sidebar={Sidebar}/>
-                </div>
+                        <Route path='*'
+                               render={() => <div>404 PAGE NOT FOUND </div>}/>
+                    </Switch>
+                    </div>
             </div>
 
         );
