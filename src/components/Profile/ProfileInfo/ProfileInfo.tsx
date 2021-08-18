@@ -1,19 +1,18 @@
-import React, {useState} from "react";
+import React, {ChangeEvent, useState} from "react";
 import p from "../Profile.module.css";
 import Preloader from "../../Common/Preloader/Preloader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import userPhoto from "../../../assets/images/user.png"
-import ProfileDataForm, {FormDateType} from "./ProfileDataForm";
+import ProfileDataForm from "./ProfileDataForm";
 import {ContactType, profileType} from "../../../Redux/ProfileReduser";
 
 
-
 type ProfileInfoPropsType = {
-    profile:any           //    profileType
+    profile: profileType
     status: string
     updateStatus: boolean
     isOwner: boolean
-    savePhoto: (e: any) => string
+    savePhoto: (files: FileList[number]) => string
     saveProfile: any
 }
 
@@ -24,18 +23,20 @@ export default function ProfileInfo(props: ProfileInfoPropsType) {
     if (!props.profile) {
         return <Preloader/>
     }
-    const onMainPhotoSelected = (e: any) => {
+    const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
+        const files = e.target.files;
 
-        if (e.current.file.length) {
+
+        if (files && files.length) {
             debugger
-            props.savePhoto(e.current.file[0])
+            props.savePhoto(files[0])
         }
     }
     const onSubmit = (formData: any) => {
         props.saveProfile(formData).then(() => {
-            setEditMode(false)  ;
+            setEditMode(false);
         })
-     }
+    }
 
     return (
         <div>
@@ -47,7 +48,7 @@ export default function ProfileInfo(props: ProfileInfoPropsType) {
                     ? <ProfileDataForm
                         initialValues={props.profile}
 
-                      //  profile={props.profile}
+                        //  profile={props.profile}
                         onSubmit={onSubmit}
                     />
                     : <ProfileData
@@ -72,7 +73,7 @@ export default function ProfileInfo(props: ProfileInfoPropsType) {
 
 type ProfileDataType = {
     profile: profileType
-    isOwner:boolean
+    isOwner: boolean
     goToEditMode: () => void
 }
 const ProfileData: React.FC<ProfileDataType> = ({profile, isOwner, goToEditMode}) => {
@@ -96,6 +97,9 @@ const ProfileData: React.FC<ProfileDataType> = ({profile, isOwner, goToEditMode}
             {/*<div>*/}
             {/*    <b>About me</b>: {profile.aboutMe ? 'yes' : 'no'}*/}
             {/*</div>*/}
+
+            // ?????????????? Profile.aboutMe
+
             <div>
                 <b>Contacts</b>: {Object.keys(profile.contacts).map((key: any) => {
                 return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>

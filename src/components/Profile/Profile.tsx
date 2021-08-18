@@ -9,8 +9,8 @@ type ProfilePropsType = {
     updateStatus: boolean
     profile: profileType
     isOwner: boolean
-    savePhoto: (e: any) => string
-    saveProfile: () => void
+    savePhoto: (files: FileList[number]) => string
+    saveProfile: any
 }
 
 export default function Profile(props: ProfilePropsType) {

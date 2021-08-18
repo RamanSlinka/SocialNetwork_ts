@@ -8,8 +8,7 @@ import {compose} from "redux";
 
 
 type PathParamsType = {
-    userId:any
-        //string | number | null
+    userId:        string
   }
 
 
@@ -23,11 +22,11 @@ type MapStatePropsType = {
 }
 
 type MapDispatchPropsType = {
-    getUserProfile: any             // ????????
-    getStatus: any                  //   ?????
+    getUserProfile: (userId: number | null ) => void
+    getStatus: (userId: number | null)=> void
     updateStatus: boolean
-    savePhoto: (e: any) => string
-    saveProfile: () => void
+    savePhoto: (files: FileList[number]) => string
+    saveProfile: any
 }
 
 type OwnPropsType = MapStatePropsType & MapDispatchPropsType
@@ -37,13 +36,13 @@ class ProfileContainer extends React.Component<PropsType> {
     refreshProfile() {
         let userId = this.props.match.params.userId;
         if (!userId) {
-            userId = this.props.authorizedUserId;
+            userId = `${this.props.authorizedUserId}`
             if (!userId) {
                 this.props.history.push("/login")
             }
         }
-        this.props.getUserProfile(userId);
-        this.props.getStatus(userId);
+        this.props.getUserProfile(+userId);
+        this.props.getStatus(+userId);
     }
 
     componentDidMount() {

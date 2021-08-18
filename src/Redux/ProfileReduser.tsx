@@ -1,6 +1,6 @@
 import {profileAPI, usersAPI} from "../Api/api";
 
-import { AppThunkType} from "./redux-store";
+import {AppThunkType} from "./redux-store";
 import {stopSubmit} from "redux-form";
 
 
@@ -26,7 +26,7 @@ type deletePostACType = {
     postId: number
 }
 type savePhotoACType = {
-    type:  'SAVE_PHOTO_SUCCESS'
+    type: 'SAVE_PHOTO_SUCCESS'
     photos: string
 }
 
@@ -46,7 +46,7 @@ export type initialStateType = {
     profile: any
     status: string
 }
-export type ContactType ={
+export type ContactType = {
     github: string
     vk: string
     facebook: string
@@ -54,7 +54,8 @@ export type ContactType ={
     twitter: string
     website: string
     youtube: string
-    mainLink: string}
+    mainLink: string
+}
 
 export type profileType = {
     userId: number | null
@@ -62,7 +63,7 @@ export type profileType = {
     lookingForAJobDescription: string
     fullName: string
     contacts: Array<ContactType>
-
+    photos: { small: string, large: string }
 }
 
 let initialState: initialStateType = {
@@ -129,9 +130,8 @@ export const savePhotoSuccess = (photos: string): savePhotoACType => ({
 } as const)
 
 
-
 //Thunk
-export const getUserProfile = (userId: number | null ): AppThunkType => async (dispatch) => {
+export const getUserProfile = (userId: number | null): AppThunkType => async (dispatch) => {
     let response = await usersAPI.getProfile(userId)
     dispatch(setUserProfile(response.data));
 }
@@ -153,14 +153,14 @@ export const savePhoto = (file: string): AppThunkType => async (dispatch) => {
     }
 }
 export const saveProfile = (profile: profileType): AppThunkType => async (dispatch, getState) => {
-const userId =  getState().auth.userId;
-       let response = await profileAPI.saveProfile(profile)
+    const userId = getState().auth.userId;
+    let response = await profileAPI.saveProfile(profile)
     if (response.data.resultCode === 0) {
 
         dispatch(getUserProfile(userId));
     } else {
         dispatch(stopSubmit('edit-profile', {_error: response.data.message[0]}))
-        return Promise.reject( response.data.message[0]);
+        return Promise.reject(response.data.message[0]);
     }
 }
 
