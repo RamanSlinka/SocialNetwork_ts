@@ -4,26 +4,30 @@ import Preloader from "../../Common/Preloader/Preloader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import userPhoto from "../../../assets/images/user.png"
 import ProfileDataForm, {FormDateType} from "./ProfileDataForm";
+import {ContactType, profileType} from "../../../Redux/ProfileReduser";
+
 
 
 type ProfileInfoPropsType = {
-    profile: any
+    profile:any           //    profileType
     status: string
-    updateStatus: any
+    updateStatus: boolean
     isOwner: boolean
-    savePhoto: any
+    savePhoto: (e: any) => string
     saveProfile: any
 }
 
 
-export default function ProfileInfo(props: any) {
+export default function ProfileInfo(props: ProfileInfoPropsType) {
 
     let [editMode, setEditMode] = useState(false);
     if (!props.profile) {
         return <Preloader/>
     }
     const onMainPhotoSelected = (e: any) => {
+
         if (e.current.file.length) {
+            debugger
             props.savePhoto(e.current.file[0])
         }
     }
@@ -32,6 +36,7 @@ export default function ProfileInfo(props: any) {
             setEditMode(false)  ;
         })
      }
+
     return (
         <div>
             <div className={p.descriptionBlock}>
@@ -41,8 +46,8 @@ export default function ProfileInfo(props: any) {
                 {editMode
                     ? <ProfileDataForm
                         initialValues={props.profile}
-                        // @ts-ignore
-                        profile={props.profile}
+
+                      //  profile={props.profile}
                         onSubmit={onSubmit}
                     />
                     : <ProfileData
@@ -65,7 +70,12 @@ export default function ProfileInfo(props: any) {
 }
 
 
-const ProfileData: React.FC<any> = ({profile, isOwner, goToEditMode}) => {
+type ProfileDataType = {
+    profile: profileType
+    isOwner:boolean
+    goToEditMode: () => void
+}
+const ProfileData: React.FC<ProfileDataType> = ({profile, isOwner, goToEditMode}) => {
     return (
         <div>
             {isOwner && <div>
@@ -83,11 +93,11 @@ const ProfileData: React.FC<any> = ({profile, isOwner, goToEditMode}) => {
                 <b>My professional skills</b>: {profile.lookingForAJobDescription}
             </div>
             }
+            {/*<div>*/}
+            {/*    <b>About me</b>: {profile.aboutMe ? 'yes' : 'no'}*/}
+            {/*</div>*/}
             <div>
-                <b>About me</b>: {profile.aboutMe ? 'yes' : 'no'}
-            </div>
-            <div>
-                <b>Contacts</b>: {Object.keys(profile.contacts).map(key => {
+                <b>Contacts</b>: {Object.keys(profile.contacts).map((key: any) => {
                 return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
             })}
             </div>
@@ -95,8 +105,11 @@ const ProfileData: React.FC<any> = ({profile, isOwner, goToEditMode}) => {
     )
 }
 
-
-const Contact: React.FC<any> = ({contactTitle, contactValue}) => {
+type ContactTypeProps = {
+    contactTitle: string
+    contactValue: ContactType
+}
+const Contact: React.FC<ContactTypeProps> = ({contactTitle, contactValue}) => {
     return (
         <div className={p.contact}><b>{contactTitle}</b> : {contactValue}</div>
     )

@@ -3,31 +3,31 @@ import Profile from "./Profile";
 import {connect} from "react-redux";
 import {AppStateType} from "../../Redux/redux-store";
 import {RouteComponentProps, withRouter} from 'react-router-dom';
-import {getStatus, getUserProfile, savePhoto, saveProfile, updateStatus} from "../../Redux/ProfileReduser";
+import {getStatus, getUserProfile, profileType, savePhoto, saveProfile, updateStatus} from "../../Redux/ProfileReduser";
 import {compose} from "redux";
 
 
 type PathParamsType = {
-    userId: string | number | null
+    userId:any
+        //string | number | null
   }
 
-// @ts-ignore
+
 type PropsType = RouteComponentProps<PathParamsType> & OwnPropsType
 
 type MapStatePropsType = {
-    profile: any
+    profile: profileType
     status: string
     authorizedUserId: string | number | null
     isAuth: boolean
-
 }
 
 type MapDispatchPropsType = {
-    getUserProfile: any
-    getStatus: any
-    updateStatus: any
-    savePhoto: any
-    saveProfile: any
+    getUserProfile: any             // ????????
+    getStatus: any                  //   ?????
+    updateStatus: boolean
+    savePhoto: (e: any) => string
+    saveProfile: () => void
 }
 
 type OwnPropsType = MapStatePropsType & MapDispatchPropsType
@@ -51,7 +51,7 @@ class ProfileContainer extends React.Component<PropsType> {
     }
 
     componentDidUpdate(prevProps: Readonly<PropsType>, prevState: Readonly<{}>, snapshot?: any) {
-        if (this.props.match.params.userId != prevProps.match.params.userId) {
+        if (this.props.match.params.userId !== prevProps.match.params.userId) {
             this.refreshProfile()
         }
     }

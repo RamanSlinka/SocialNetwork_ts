@@ -31,7 +31,7 @@ let initialState: initialStateType = {
     captchaUrl: null
 };
 export type initialStateType = {
-    userId: string | number | null
+    userId:  number | null
     email: string | null
     login: string | null
     isAuth: boolean

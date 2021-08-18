@@ -46,6 +46,24 @@ export type initialStateType = {
     profile: any
     status: string
 }
+export type ContactType ={
+    github: string
+    vk: string
+    facebook: string
+    instagram: string
+    twitter: string
+    website: string
+    youtube: string
+    mainLink: string}
+
+export type profileType = {
+    userId: number | null
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    contacts: Array<ContactType>
+
+}
 
 let initialState: initialStateType = {
     posts: [
@@ -93,7 +111,7 @@ export const addPostActionCreator = (newPostText: string): addPostACType => ({
 } as const)
 
 
-export const setUserProfile = (profile: any): setUserProfileACType => ({
+export const setUserProfile = (profile: profileType): setUserProfileACType => ({
     type: 'SET-USER-PROFILE',
     profile: profile
 } as const)
@@ -113,11 +131,11 @@ export const savePhotoSuccess = (photos: string): savePhotoACType => ({
 
 
 //Thunk
-export const getUserProfile = (userId: number ): AppThunkType => async (dispatch) => {
+export const getUserProfile = (userId: number | null ): AppThunkType => async (dispatch) => {
     let response = await usersAPI.getProfile(userId)
     dispatch(setUserProfile(response.data));
 }
-export const getStatus = (userId: number): AppThunkType => async (dispatch) => {
+export const getStatus = (userId: number | null): AppThunkType => async (dispatch) => {
     let response = await profileAPI.getStatus(userId)
     dispatch(setStatus(response.data));
 }
@@ -130,14 +148,15 @@ export const updateStatus = (status: string): AppThunkType => async (dispatch) =
 export const savePhoto = (file: string): AppThunkType => async (dispatch) => {
     let response = await profileAPI.savePhoto(file)
     if (response.data.resultCode === 0) {
+        debugger
         dispatch(savePhotoSuccess(response.data.data.photos));
     }
 }
-export const saveProfile = (profile: any): AppThunkType => async (dispatch, getState) => {
+export const saveProfile = (profile: profileType): AppThunkType => async (dispatch, getState) => {
 const userId =  getState().auth.userId;
        let response = await profileAPI.saveProfile(profile)
     if (response.data.resultCode === 0) {
-        // @ts-ignore
+
         dispatch(getUserProfile(userId));
     } else {
         dispatch(stopSubmit('edit-profile', {_error: response.data.message[0]}))

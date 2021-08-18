@@ -1,24 +1,19 @@
 import React from 'react';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import {profileType} from "../../Redux/ProfileReduser";
 
-
-/*  profilePage: ProfilePageType
-  posts: Array<PostsType>
-  updateNewPostText: (message: string) => void
-  addPost: (message: string) => void
-  dispatch: (action: ActionTypes) => void*/
 
 type ProfilePropsType = {
     status: string
-    updateStatus: any
-    profile: any
+    updateStatus: boolean
+    profile: profileType
     isOwner: boolean
-    savePhoto: any
-    saveProfile: any
+    savePhoto: (e: any) => string
+    saveProfile: () => void
 }
 
-export default function Profile(props: any) {
+export default function Profile(props: ProfilePropsType) {
     return (
         <div>
             <ProfileInfo

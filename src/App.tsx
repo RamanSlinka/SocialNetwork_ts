@@ -65,7 +65,7 @@ class App extends React.Component<PropsType> {
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>
                     <Route path='/sidebar' sidebar={Sidebar}/>
-                        <Route path='*'
+                        <Route path='/*'
                                render={() => <div>404 PAGE NOT FOUND </div>}/>
                     </Switch>
                     </div>
