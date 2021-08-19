@@ -3,7 +3,7 @@ import p from "../Profile.module.css";
 import Preloader from "../../Common/Preloader/Preloader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import userPhoto from "../../../assets/images/user.png"
-import ProfileDataForm from "./ProfileDataForm";
+import ProfileDataForm, {FormDateType} from "./ProfileDataForm";
 import {ContactType, profileType} from "../../../Redux/ProfileReduser";
 
 
@@ -13,7 +13,7 @@ type ProfileInfoPropsType = {
     updateStatus: boolean
     isOwner: boolean
     savePhoto: (files: FileList[number]) => string
-    saveProfile: any
+    saveProfile: (formData: FormDateType) => any
 }
 
 
@@ -28,7 +28,6 @@ export default function ProfileInfo(props: ProfileInfoPropsType) {
 
 
         if (files && files.length) {
-            debugger
             props.savePhoto(files[0])
         }
     }
@@ -37,6 +36,7 @@ export default function ProfileInfo(props: ProfileInfoPropsType) {
             setEditMode(false);
         })
     }
+
 
     return (
         <div>
@@ -47,8 +47,8 @@ export default function ProfileInfo(props: ProfileInfoPropsType) {
                 {editMode
                     ? <ProfileDataForm
                         initialValues={props.profile}
-
-                        //  profile={props.profile}
+                        // @ts-ignore
+                        profile={props.profile}
                         onSubmit={onSubmit}
                     />
                     : <ProfileData
@@ -79,9 +79,7 @@ type ProfileDataType = {
 const ProfileData: React.FC<ProfileDataType> = ({profile, isOwner, goToEditMode}) => {
     return (
         <div>
-            {isOwner && <div>
-                <button onClick={goToEditMode}>edit</button>
-            </div>}
+
             <div>
                 <b>Full name</b>: {profile.fullName}
             </div>
@@ -94,17 +92,21 @@ const ProfileData: React.FC<ProfileDataType> = ({profile, isOwner, goToEditMode}
                 <b>My professional skills</b>: {profile.lookingForAJobDescription}
             </div>
             }
-            {/*<div>*/}
-            {/*    <b>About me</b>: {profile.aboutMe ? 'yes' : 'no'}*/}
-            {/*</div>*/}
 
-            // ?????????????? Profile.aboutMe
+            <div>
+                <b>About me</b>: {profile ? 'yes' : 'no'}
+            </div>
+
+
 
             <div>
                 <b>Contacts</b>: {Object.keys(profile.contacts).map((key: any) => {
                 return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
             })}
             </div>
+            {isOwner && <div>
+                <button onClick={goToEditMode}>Edit</button>
+            </div>}
         </div>
     )
 }

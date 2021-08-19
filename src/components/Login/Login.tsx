@@ -67,7 +67,7 @@ const Login: React.FC<MapStatePropsType & MapDispatchPropsType> = (props) => {
         props.login(formData.email, formData.password, formData.remember, formData.captcha)
     }
     if (props.isAuth) {
-        return <Redirect to={'/profile'}/>
+        return <Redirect to={'/'}/>             //  '/profile'
     }
 
     return (
