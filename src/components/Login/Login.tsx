@@ -32,7 +32,6 @@ const LoginForm: React.FC<InjectedFormProps<FormDateType, LoginPropsType> & Logi
                 {CreateField(null, 'remember', [], Input, {type: 'checkbox'}, 'remember me')}
 
                 {captchaUrl && <img src={captchaUrl}/>}
-                {/*{captchaUrl && <h1>captch</h1>}*/}
                 {captchaUrl && CreateField('Symbols from images', 'captcha', [required], Input, {})}
 
 
@@ -67,7 +66,7 @@ const Login: React.FC<MapStatePropsType & MapDispatchPropsType> = (props) => {
         props.login(formData.email, formData.password, formData.remember, formData.captcha)
     }
     if (props.isAuth) {
-        return <Redirect to={'/'}/>             //  '/profile'
+        return <Redirect to={'/profile'}/>             //  '/profile'
     }
 
     return (

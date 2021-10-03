@@ -8,7 +8,7 @@ import {compose} from "redux";
 
 
 type PathParamsType = {
-    userId:        string
+    userId: string
   }
 
 
