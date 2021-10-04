@@ -1,17 +1,28 @@
+.AppBG {
+    background-image: url("https://img5.goodfon.ru/wallpaper/nbig/c/25/tekstura-fon-uzor-retro-vintazh-chernyi-seryi.jpg");
+    background-repeat: repeat ;
+    height: 3000px;
+    background-attachment: fixed  ;
+}
+
 .app-wrapper {
-    width: 1000px;
     margin: 0 auto;
+    height: 1000px;
+    width: 1200px;
     display: grid;
     grid-template-areas:
-  'h h'
-  'n c';
-    grid-template-rows: 80px 2fr;
+      'h h '
+      'n c';
+    grid-template-rows: 120px 1fr;
     grid-template-columns: 2fr 10fr;
-    grid-gap: 5px;
-
+    grid-gap: 10px;
 }
 
 .app-wrapper-content {
-    grid-area: c;
-    background: honeydew;
+    grid-template: 'c';
+    background: rgba(255, 255, 255, 0.5);
+    border: white 1px solid;
+    border-radius: 7px;
+    color: white;
+    font-size: 20px;
 }

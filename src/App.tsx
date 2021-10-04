@@ -31,6 +31,9 @@ class App extends React.Component<PropsType> {
         }
 
         return (
+            <div className="AppBG">
+
+
             <div className='app-wrapper'>
                 <HeaderContainer/>
                 <NavBar/>
@@ -70,7 +73,7 @@ class App extends React.Component<PropsType> {
                     </Switch>
                     </div>
             </div>
-
+            </div>
         );
     }
 }

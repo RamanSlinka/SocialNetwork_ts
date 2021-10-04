@@ -12,11 +12,11 @@ export default function Post(props: PostMessage) {
         <div>
             <div className={p.item}>
                 <img
-                    src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq_I0JFO2DxoAV3J-sI7ajtx0qW0Q5neaY_A&usqp=CAU'
-                    className={p.img}/>
+                    src="https://upload.wikimedia.org/wikipedia/commons/8/87/Avatar_poe84it.png"
+                className={p.img}/>
                 {props.message}
-                <div>
-                    <span>like </span>{props.likesCount}
+                <div className={p.like}>
+                    <span >like </span>{props.likesCount}
                 </div>
             </div>
 

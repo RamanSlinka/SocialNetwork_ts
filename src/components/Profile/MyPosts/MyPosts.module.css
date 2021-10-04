@@ -1,21 +1,24 @@
 
-.text_area {
-    margin: 0 auto;
-    width: 90%;
-    height: 40px;
-    border: none;
-    margin-left: 25px;
+.textarea {
+    width: 400px;
+    height: 80px;
+    margin: 10px;
+    border: #020202 solid 1px;
+    border-radius: 7px;
 
 }
 
 .btn {
-    padding: 4px 35px 4px 12px ;
-    background: cadetblue;
-    margin-left: 85%;
-    margin-top: 15px;
-    text-align: center;
+    background: gold;
+    font-weight: bold;
+    color: #030303;
+    width: 100px;
+    padding: 7px;
+    margin: 5px 10px 10px 300px;
+    border: #020202 solid 1px;
+    border-radius: 7px;
 
 }
 .postsBlock{
-    padding: 10px;
+    padding: 15px;
 }

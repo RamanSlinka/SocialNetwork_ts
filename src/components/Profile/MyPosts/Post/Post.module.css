@@ -1,11 +1,16 @@
 
 
 .item {
-    color: #034343;
+    color: white;
     font-size: 25px;
+    padding-bottom: 30px;
 }
 .img {
     width: 80px;
     border-radius: 50px;
-    border: #1decc0 1px solid;
+    border: gold 3px solid;
+}
+
+.like{
+    font-size: 18px;
 }
