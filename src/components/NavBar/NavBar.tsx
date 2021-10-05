@@ -16,7 +16,7 @@ export default function NavBar() {
                 <NavLink to='/users' activeClassName={s.active}>Users</NavLink>
             </div>
             <div className={`${s.item} ${s.active}`}>
-                <NavLink to='/news' activeClassName={s.active}>News</NavLink>
+                <NavLink to='/video' activeClassName={s.active}>Video</NavLink>
             </div>
             <div className={s.item}>
                 <NavLink to='/music'activeClassName={s.active}>Music</NavLink>

@@ -1,1 +1,27 @@
+.wrapper {
+    margin: 10px;
+}
 
+.trackWrapper {
+    width: 45%;
+    border: gold 1px solid;
+    border-radius: 7px;
+    margin: 5px;
+
+}
+
+.track {
+    margin-left: 5px;
+    font-size: 25px;
+}
+
+.btn {
+    background: gold;
+    font-weight: bold;
+    color: #030303;
+    width: 100px;
+    padding: 7px;
+    margin: 5px 10px 10px 300px;
+    border: #020202 solid 1px;
+    border-radius: 7px;
+}

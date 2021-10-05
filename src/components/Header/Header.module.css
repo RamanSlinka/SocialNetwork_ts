@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
     background-image: url("https://www.desktopbackground.org/p/2010/05/31/25998_black-abstract-wallpapers-wide_4288x2416_h.jpg");
     grid-area: h;
     border: #fcfcfc 1px solid;
@@ -27,8 +26,7 @@
     background: gold;
     font-weight: bold;
     color: #030303;
-padding: 3px;
+    padding: 4px;
     width: 70px;
-    border: #faf9f9 solid 1px;
     border-radius: 7px;
 }

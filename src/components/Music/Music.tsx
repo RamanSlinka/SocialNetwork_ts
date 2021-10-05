@@ -1,10 +1,23 @@
 import React from 'react';
-import m from './Music.module.css'
+import MultiPlayer from "./MusicAudio";
+import style from "./Music.module.css"
 
-export default function Music() {
+const Music = () => {
     return (
-        <div>
-            Music
+        <div className={style.wrapper}>
+            <div className="App">
+                <MultiPlayer
+                    urls={[
+                        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+                        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+                        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3'
+                    ]}
+                />
+
+
+            </div>
         </div>
     );
-}
+};
+
+export default Music;
