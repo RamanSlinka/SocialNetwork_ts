@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from "react";
+import React from "react";
 import h from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
@@ -9,40 +9,19 @@ import {maxLengthCreator, required} from "../../Utils/Validators/validators";
 
 
 
-/*
-type DialogsPropsType = {
-    sendMessage: () => void
-    dialogsPage: DialogPageType
-    updateNewMessageBody: (message: string) => void
-    dialogs: Array<DialogType>
-    messages: Array<MessageType>
-    newMessageBody: string
-    dispatch: (action: ActionTypes) => void*/
-
 
 const Dialogs:React.FC<DialogsPropsType> = (props) => {
 
-    /* let state = props.dialogsPage*/
+    let dialogsElements = props.dialogsPage.dialogs.map(dialog =>
+        <DialogItem name={dialog.name} id={dialog.id}/>);
 
-    let dialogsElements = props.dialogsPage.dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id}/>);
-    let messagesElements = props.dialogsPage.messages.map(message => <Message message={message}/>)
-    // let newMessageBody = props.dialogsPage.newMessageBody;
+    let messagesElements = props.dialogsPage.messages.map(message =>
+        <Message message={message}/>)
 
-    /* let newMessage = React.createRef<HTMLTextAreaElement>()*/
-    /* let onSendMessageClick = () => {
-         props.sendMessage()
-     }*/
-    /*let onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        let body = e.currentTarget.value
-        props.updateNewMessageBody(body)
-        /!*props.dispatch(updateNewMessageBodyCreator(body))*!/
-    }*/
 
     let addNewMessage = (values: any) => {
         props.sendMessage(values.newMessageBody)
     }
-
-    /*  if (!props.isAuth ) return <Redirect to={'./login'}/>*/
 
     return (
         <div className={h.dialogs}>
@@ -53,7 +32,7 @@ const Dialogs:React.FC<DialogsPropsType> = (props) => {
             <div className={h.messages}>
                 {messagesElements}
             </div>
-            <div>
+            <div className={h.textareaWrapper}>
                 <AddMessageFormRedux onSubmit={addNewMessage}/>
             </div>
         </div>
@@ -63,17 +42,21 @@ const Dialogs:React.FC<DialogsPropsType> = (props) => {
 type FormType = {
     newMessageBody: string
 }
+
 const maxLength = maxLengthCreator(50)
+
 const AddMessageForm: React.FC<InjectedFormProps<FormType>> = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field component={Textarea}
+                <Field
+                    className={h.textarea}
+                    component={Textarea}
                        validate={[required, maxLength]}
-                       name='newMessageBody' placeholder={'enter your message'}/>
+                       name='newMessageBody' placeholder={'Enter your message'}/>
             </div>
             <div>
-                <button> Send</button>
+                <button className={h.btn}> Send</button>
             </div>
         </form>
     )

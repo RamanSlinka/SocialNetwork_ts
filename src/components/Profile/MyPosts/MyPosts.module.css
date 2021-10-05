@@ -2,10 +2,8 @@
 .textarea {
     width: 400px;
     height: 80px;
-    margin: 10px;
     border: #020202 solid 1px;
     border-radius: 7px;
-
 }
 
 .btn {
@@ -17,7 +15,6 @@
     margin: 5px 10px 10px 300px;
     border: #020202 solid 1px;
     border-radius: 7px;
-
 }
 .postsBlock{
     padding: 15px;

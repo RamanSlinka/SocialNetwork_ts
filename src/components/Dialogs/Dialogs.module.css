@@ -2,6 +2,7 @@
 .dialogs {
     display: grid;
     grid-template-columns: 3fr 10fr;
+    grid-template-rows: 200px 200px ;
 }
 
 .dialogsItem {
@@ -12,7 +13,6 @@
 
 .dialog a{
     margin: 10px;
-    padding: 10px;
     color: white;
     text-decoration: none;
     text-transform: none;
@@ -21,10 +21,32 @@
     color: gold;
 }
 
+.textareaWrapper {
+
+}
+
+
 .messages {
     padding: 20px;
 }
 
-.message {
 
+
+.textarea {
+    margin-left: 20px;
+    width: 400px;
+    height: 80px;
+    border: #020202 solid 1px;
+    border-radius: 7px;
+}
+
+.btn {
+    background: gold;
+    font-weight: bold;
+    color: #030303;
+    width: 100px;
+    padding: 7px;
+    margin: 5px 10px 10px 300px;
+    border: #020202 solid 1px;
+    border-radius: 7px;
 }

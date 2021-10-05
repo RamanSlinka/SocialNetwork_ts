@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import NavBar from './components/NavBar/NavBar'
 import Settings from "./components/Settings/Settings";
-import News from "./components/News/News";
+import Video from "./components/Video/Video";
 import Music from "./components/Music/Music";
 import Sidebar from "./components/Sidebar/Sidebar";
 import {Redirect, Route, Switch, withRouter} from 'react-router-dom';
@@ -64,7 +64,7 @@ class App extends React.Component<PropsType> {
                            render={() => <Login/>}/>
 
 
-                    <Route path='/news' component={News}/>
+                    <Route path='/video' component={Video}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>
                     <Route path='/sidebar' sidebar={Sidebar}/>
