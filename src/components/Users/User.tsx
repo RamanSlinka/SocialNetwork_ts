@@ -15,7 +15,7 @@ type OnPageChangedType = {
 
 let User: React.FC<OnPageChangedType> = ({user, followingInProgress, follow, unfollow}) => {
     return (
-        <div>
+        <div className={styles.user}>
                     <span>
                         <div>
                             <NavLink to={'/profile/' + user.id}>
@@ -26,11 +26,13 @@ let User: React.FC<OnPageChangedType> = ({user, followingInProgress, follow, unf
                         <div>
                             {!user.followed
                                 ? <button
+                                    className={styles.btn}
                                     disabled={followingInProgress.some(id => id === user.id)}
                                     onClick={() => {
                                         follow(user.id)
                                     }}>follow</button>
                                 : <button
+                                    className={styles.btn}
                                     disabled={followingInProgress.some(id => id === user.id)}
                                     onClick={() => {
                                         unfollow(user.id)
@@ -44,10 +46,7 @@ let User: React.FC<OnPageChangedType> = ({user, followingInProgress, follow, unf
                             <div>{user.name}</div>
                             <div>{user.status}</div>
                         </span>
-                        <span>
-                            <div>{'user.location.country'}</div>
-                            <div>{'user.location.city'}</div>
-                        </span>
+
                     </span>
         </div>)
 
