@@ -21,7 +21,7 @@ const useMultiAudio = (urls:any) => {
         }),
     )
 
-    const toggle = (targetIndex:any) => () => {
+    const toggle = (targetIndex: number) => () => {
         const newPlayers = [...players]
         const currentIndex = players.findIndex((p: any) => p.playing === true)
         if (currentIndex !== -1 && currentIndex !== targetIndex) {

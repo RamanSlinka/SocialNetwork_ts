@@ -5,7 +5,7 @@ import style from "./Music.module.css"
 const Music = () => {
     return (
         <div className={style.wrapper}>
-            <div className="App">
+            <div >
                 <MultiPlayer
                     urls={[
                         'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
