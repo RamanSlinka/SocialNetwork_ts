@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import NavBar from './components/NavBar/NavBar'
 import Settings from "./components/Settings/Settings";
 import Video from "./components/Video/Video";
@@ -32,8 +32,6 @@ class App extends React.Component<PropsType> {
 
         return (
             <div className="AppBG">
-
-
             <div className='app-wrapper'>
                 <HeaderContainer/>
                 <NavBar/>

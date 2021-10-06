@@ -1,5 +1,6 @@
 import React from "react";
-import h from './Dialogs.module.css'
+import style from './Dialogs.module.scss';
+ import styleBtn from '../Common/SCSS/button.module.scss';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {DialogsPropsType} from "./DialogsContainer";
@@ -8,9 +9,7 @@ import {Textarea} from "../Common/FormsControls/FormsControls";
 import {maxLengthCreator, required} from "../../Utils/Validators/validators";
 
 
-
-
-const Dialogs:React.FC<DialogsPropsType> = (props) => {
+const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
     let dialogsElements = props.dialogsPage.dialogs.map(dialog =>
         <DialogItem name={dialog.name} id={dialog.id}/>);
@@ -24,15 +23,15 @@ const Dialogs:React.FC<DialogsPropsType> = (props) => {
     }
 
     return (
-        <div className={h.dialogs}>
-            <div className={h.dialogsItem}>
+        <div className={style.dialogs}>
+            <div className={style.dialogsItem}>
                 {dialogsElements}
 
             </div>
-            <div className={h.messages}>
+            <div className={style.messages}>
                 {messagesElements}
             </div>
-            <div className={h.textareaWrapper}>
+            <div className={style.textareaWrapper}>
                 <AddMessageFormRedux onSubmit={addNewMessage}/>
             </div>
         </div>
@@ -50,13 +49,13 @@ const AddMessageForm: React.FC<InjectedFormProps<FormType>> = (props) => {
         <form onSubmit={props.handleSubmit}>
             <div>
                 <Field
-                    className={h.textarea}
+                    className={style.textarea}
                     component={Textarea}
-                       validate={[required, maxLength]}
-                       name='newMessageBody' placeholder={'Enter your message'}/>
+                    validate={[required, maxLength]}
+                    name='newMessageBody' placeholder={'Enter your message'}/>
             </div>
             <div>
-                <button className={h.btn}> Send</button>
+                <button className={styleBtn.button}> Send</button>
             </div>
         </form>
     )

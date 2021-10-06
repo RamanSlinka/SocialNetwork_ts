@@ -1,21 +1,31 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import h from './Header.module.css';
+import style from './Header.module.scss';
+import styleBtn from '../Common/SCSS/button.module.scss';
 import logo from './../../assets/images/logo_header.png'
 
 
-export default function Header(props: any) {
-    return <header className={h.header}>
+type HeaderPropsType = {
+    isAuth: boolean
+    login: string | null
+    logout: () => void
+
+}
+
+export default function Header(props: HeaderPropsType) {
+    return <header className={style.header}>
         <img
             src={logo} alt="logo"/>
-        <div className={h.loginBlock}>
+        <div className={style.loginBlock}>
             {props.isAuth
-                ? <div className={h.userName}> {props.login}
+                ? <div className={style.userName}> {props.login}
                     <button
-                        className={h.btnLog}
-                        onClick={props.logout}>Log out</button></div>
-                : <NavLink to={'/login'}>Login</NavLink>}
-
+                        className={styleBtn.button}
+                        onClick={props.logout}>Log out
+                    </button>
+                </div>
+                : <div className={style.btnLog}><NavLink to='/login'>Login</NavLink>
+                </div>}
         </div>
     </header>;
 

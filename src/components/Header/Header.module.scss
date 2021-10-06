@@ -1,3 +1,4 @@
+@import '../Common/SCSS/variables';
 
 .header {
     display: flex;
@@ -5,28 +6,29 @@
     justify-content: space-between;
     background-image: url("https://www.desktopbackground.org/p/2010/05/31/25998_black-abstract-wallpapers-wide_4288x2416_h.jpg");
     grid-area: h;
-    border: #fcfcfc 1px solid;
+    border: $textColor 1px solid;
     border-radius: 7px;
     margin-top: 5px;
 }
 
 
-.loginBlock {
 
-}
 
 .userName {
     margin-top: 20px;
-    color: white;
+    color: $textColor;
     font-size: 40px;
 }
 
 .btnLog {
-    margin: 0 15px 0 400px;
-    background: gold;
-    font-weight: bold;
-    color: #030303;
-    padding: 4px;
-    width: 70px;
-    border-radius: 7px;
+    margin: 10px 15px 10px 400px;
+    background: $goldColor;
+    color: $blackColor;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 30px;
+
 }
