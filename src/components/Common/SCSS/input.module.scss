@@ -1,0 +1,18 @@
+@import "variables";
+
+
+.input{
+  height: 25px;
+  padding-left: 5px;
+  border: $goldColor 1px solid;
+  margin: 5px;
+}
+
+
+.textarea {
+  margin:20px 0  0 20px;
+  width: 300px;
+  height: 80px;
+  border: $blackColor solid 1px;
+  border-radius: 7px;
+}

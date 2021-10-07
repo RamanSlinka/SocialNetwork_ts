@@ -2,7 +2,7 @@ import React from "react";
 import {UserType} from "../../Redux/UsersReducer";
 import Paginator from "../Common/Paginator/Paginator";
 import User from "./User";
-import s from "./users.module.css"
+import styles from "./users.module.scss"
 
 
 type OnPageChangedType = {
@@ -20,7 +20,7 @@ type OnPageChangedType = {
 
 let Users = (props: OnPageChangedType) => {
     return (
-        <div className={s.userWrapper}>
+        <div className={styles.userWrapper}>
             <Paginator pageSize={props.pageSize}
                        currentPage={props.currentPage}
                        onPageChanged={props.onPageChanged}

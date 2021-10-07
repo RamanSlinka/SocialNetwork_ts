@@ -1,13 +1,13 @@
-
+@import '../Common/SCSS/variables';
 
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Special+Elite&display=swap');
 .nav {
     grid-area: n;
     padding: 7px;
-    color: gold;
+    color: $goldColor;
     font-weight: bolder;
     font-size: 40px;
-    border: #ffffff 1px solid;
+    border: $textColor 1px solid;
     border-radius: 7px;
     background: rgba(255, 255, 255, 0.5);
 }
@@ -15,10 +15,10 @@
 
 .item a{
     text-decoration: none;
-    color: gold;
+    color: $goldColor;
 
 }
 
 .item a.active {
-    color: white;
+    color: $textColor;
 }

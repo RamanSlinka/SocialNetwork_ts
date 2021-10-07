@@ -1,0 +1,23 @@
+@import '../../Common/SCSS/variables';
+
+.status{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 10px;
+    .statusTitle{
+        font-size: 15px;
+        font-weight: normal;
+    }
+    .statusDescription{
+        color: $goldColor;
+        font-size: 20px;
+        font-weight: bold;
+    }
+}
+
+
+.avatar {
+    width: 200px;
+}
+

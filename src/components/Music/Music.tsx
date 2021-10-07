@@ -1,6 +1,6 @@
 import React from 'react';
 import MultiPlayer from "./MusicAudio";
-import style from "./Music.module.css"
+import style from "./Music.module.scss"
 
 const Music = () => {
     return (

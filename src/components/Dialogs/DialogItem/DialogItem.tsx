@@ -1,6 +1,6 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-import h from '../Dialogs.module.scss'
+import style from '../Dialogs.module.scss'
 
 type DialogItemPropsType = {
     name: string
@@ -9,8 +9,8 @@ type DialogItemPropsType = {
 
 export default function DialogItem(props: DialogItemPropsType) {
     return (
-        <div className={h.dialog}>
-            <NavLink activeClassName={h.activeDialog}
+        <div className={style.dialog}>
+            <NavLink activeClassName={style.activeDialog}
                      to={'/dialogs/' + props.id}
             > {props.name}
             </NavLink>

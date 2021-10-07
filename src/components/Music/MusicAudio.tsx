@@ -1,5 +1,6 @@
 import React, {useState, useEffect, FC} from 'react'
-import style from "./Music.module.css"
+import style from "./Music.module.scss"
+import styleCommon from '../Common/SCSS/button.module.scss'
 
 
 const useMultiAudio = (urls:any) => {
@@ -78,7 +79,7 @@ const MultiPlayer:FC<any> = ({ urls }) => {
 const Player:FC<any> = ({ player, toggle }) => (
     <div className={style.trackWrapper}>
         <p className={style.track}>Stream music</p>
-        <button className={style.btn}
+        <button className={styleCommon.button}
             onClick={toggle}
         >{player.playing ? 'Pause' : 'Play'}
         </button>

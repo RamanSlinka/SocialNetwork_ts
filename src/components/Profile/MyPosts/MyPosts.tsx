@@ -1,5 +1,7 @@
 import React from 'react';
-import s from './MyPosts.module.css'
+import style from './MyPosts.module.scss'
+import styleCommon from '../../Common/SCSS/input.module.scss';
+import styleBtn from '../../Common/SCSS/button.module.scss';
 import Post from './Post/Post';
 import {MyPostsType} from "./MyPostsContainer";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
@@ -7,30 +9,24 @@ import {maxLengthCreator, required} from "../../../Utils/Validators/validators";
 import {Textarea} from "../../Common/FormsControls/FormsControls";
 
 
-/*type PropsType = {
-    posts: Array<PostsType>
-    /!*dispatch: (action: ActionTypes) => void*!/
-    newPostText: string
-    updateNewPostText: (message: string) => void
-    addPost: () => void
-}*/
+const MyPosts = React.memo((props: MyPostsType) => {
 
- const  MyPosts = React.memo((props: MyPostsType) => {
-
-       let postsElements =
+    let postsElements =
         props.posts.map(post =>
             <Post key={post.id}
-                message={post.message}
+                  message={post.message}
                   likesCount={post.likesCount}
                   id={post.id}/>);
 
 
-    let onAddPost = (values: any) => {props.addPost(values.newPostText)}
+    let onAddPost = (values: any) => {
+        props.addPost(values.newPostText)
+    }
 
 
     return (
-        <div className={s.postsBlock}>
-            <h3>My posts</h3>
+        <div className={style.postsBlock}>
+            <h3 className={style.title}>My posts</h3>
             <AddNewPostFormRedux onSubmit={onAddPost}/>
             {postsElements}
         </div>
@@ -45,20 +41,22 @@ type FormType = {
     newPostText: string
 }
 
-const maxLength10 =  maxLengthCreator(10)
+const maxLength10 = maxLengthCreator(10)
 
 const AddNewPostForm: React.FC<InjectedFormProps<FormType>> = (props) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form
+            className={style.formWrapper}
+            onSubmit={props.handleSubmit}>
             <Field
-                className={s.textarea}
+                className={styleCommon.textarea}
                 name='newPostText' component={Textarea}
-            validate={[required,maxLength10]}
+                validate={[required, maxLength10]}
             />
 
             <br/>
             <button
-                className={s.btn}>Send
+                className={styleBtn.button}>Send
             </button>
         </form>
     )

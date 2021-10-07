@@ -31,30 +31,6 @@ type mapStateToPropsType = {
 export  type UsersPropsType = mapStateToPropsType & mapDispatchToPropsType
 
 
-/*
-
-let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
-    return {
-        follow: (userId: number) => {
-            dispatch(follow(userId))
-        },
-        unFollow: (userId: number) => {
-            dispatch(unFollow(userId))
-        },
-        setUsers: (users:Array<UserType>) => {
-            dispatch(setUsers(users))
-        },
-        setCurrentPage: ( currentPage: number) => {
-            dispatch(setCurrentPage(currentPage))
-        },
-        setTotalUsersCount: (totalCount: number) => {
-          dispatch(setUsersTotalCount(totalCount))
-        },
-        toggleIsFetching: (isFetching: boolean) => {
-            dispatch(setToggleIsFetching(isFetching))
-        }
-    }
-}*/
 
 class UsersContainer extends React.Component<UsersPropsType> {
 
@@ -104,16 +80,7 @@ type mapDispatchToPropsType = {
 
 }
 
-/*let mapStateToProps = (state: AppStateType): mapStateToPropsType => {
-    return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalCount: state.usersPage.totalCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
-    }
-}*/
+
 
 //use selectors :
 let mapStateToProps = (state: AppStateType): mapStateToPropsType => {

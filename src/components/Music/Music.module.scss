@@ -1,0 +1,23 @@
+@import "../Common/SCSS/variables";
+
+.wrapper {
+    margin: 10px;
+}
+
+.trackWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 45%;
+    border: $goldColor 1px solid;
+    border-radius: 7px;
+    margin: 5px;
+
+}
+
+.track {
+    align-items: center;
+    margin-left: 15px;
+    font-size: 25px;
+}
+

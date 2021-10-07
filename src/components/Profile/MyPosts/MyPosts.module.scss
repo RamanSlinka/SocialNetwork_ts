@@ -1,0 +1,17 @@
+@import '../../Common/SCSS/variables.scss';
+
+
+.postsBlock {
+  padding: 15px;
+
+  .title {
+    color: $goldColor;
+  }
+
+  .formWrapper {
+    display: flex;
+    flex-direction: row;
+
+  }
+}
+

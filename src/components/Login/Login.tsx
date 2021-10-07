@@ -6,7 +6,8 @@ import {connect} from "react-redux";
 import {login} from "../../Redux/AuthReducer";
 import {Redirect} from "react-router-dom";
 import {AppStateType} from "../../Redux/redux-store";
-import style from './../Common/FormsControls/FormsControls.module.css'
+import style from '../Common/FormsControls/FormsControls.module.scss'
+import styleCommon from '../Common/SCSS/button.module.scss'
 
 type FormDateType = {
     email: string
@@ -39,7 +40,7 @@ const LoginForm: React.FC<InjectedFormProps<FormDateType, LoginPropsType> & Logi
 
                 {error && <div className={style.formSummaryError}>{error}</div>}
                 <div>
-                    <button className={style.btn}>Login</button>
+                    <button className={styleCommon.button}>Login</button>
                 </div>
             </form>
 

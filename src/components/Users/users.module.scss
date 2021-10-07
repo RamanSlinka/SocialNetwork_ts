@@ -1,0 +1,18 @@
+@import '../Common/SCSS/variables';
+
+.userWrapper{
+    padding: 10px;
+}
+
+.user {
+    border: $blackColor dashed 1px;
+    border-radius: 7px;
+    margin: 4px;
+    padding: 3px;
+}
+.userPhoto{
+    width: 100px;
+    border: $blackColor solid 1px;
+    border-radius: 7px;
+}
+

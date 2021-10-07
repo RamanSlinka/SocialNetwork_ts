@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./users.module.css";
+import style from '../Common/SCSS/button.module.scss'
+import styles from "./users.module.scss";
 import userPhoto from "../../assets/images/user.png";
 import {NavLink} from "react-router-dom";
 import {UserType} from "../../Redux/UsersReducer";
@@ -26,13 +27,15 @@ let User: React.FC<OnPageChangedType> = ({user, followingInProgress, follow, unf
                         <div>
                             {!user.followed
                                 ? <button
-                                    className={styles.btn}
+                                    className={style.button}
+                                    style={{margin: "3px"}}
                                     disabled={followingInProgress.some(id => id === user.id)}
                                     onClick={() => {
                                         follow(user.id)
                                     }}>follow</button>
                                 : <button
-                                    className={styles.btn}
+                                    className={style.button}
+                                    style={{margin: "3px"}}
                                     disabled={followingInProgress.some(id => id === user.id)}
                                     onClick={() => {
                                         unfollow(user.id)

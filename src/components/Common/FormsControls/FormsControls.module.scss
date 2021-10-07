@@ -1,0 +1,41 @@
+@import "../SCSS/variables.scss";
+
+
+.formControl.error input,
+.formControl.error textarea {
+  border: solid 1px $redColor;
+}
+
+.formControl.error span {
+  color: $redColor;
+  font-size: 15px;
+}
+
+.formSummaryError {
+  border: $redColor 1px solid;
+  padding: 5px;
+  color: $blackColor;
+  font-size: 15px;
+}
+
+.titlesForm{
+  display: flex;
+  flex-direction: row;
+}
+
+
+.loginFormWrapper {
+  margin: 30px;
+  justify-content: center;
+  border: $textColor 1px solid;
+  border-radius: 7px;
+  width: 40%;
+  max-height: 400px;
+  padding: 20px;
+}
+
+.logPas {
+  color: $goldColor;
+}
+
+

@@ -1,5 +1,7 @@
 import React, {ChangeEvent, useState} from "react";
-import p from "../Profile.module.css";
+import styleCommon from '../../Common/SCSS/button.module.scss';
+import styles from '../../Common/FormsControls/FormsControls.module.scss';
+import style from "../Profile.module.scss";
 import Preloader from "../../Common/Preloader/Preloader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import userPhoto from "../../../assets/images/user.png"
@@ -39,10 +41,20 @@ export default function ProfileInfo(props: ProfileInfoPropsType) {
 
 
     return (
-        <div>
-            <div className={p.descriptionBlock}>
-                <img src={props.profile.photos.large || userPhoto} className={p.avatar}/>
-                {props.isOwner && <input type={'file'} onChange={onMainPhotoSelected}/>}
+        <div className={style.descriptionBlock}>
+            <ProfileStatusWithHooks
+                status={props.status}
+                updateStatus={props.updateStatus}
+            />
+            <div >
+                <img src={props.profile.photos.large || userPhoto}
+                     className={style.avatar}/>
+                {
+                    props.isOwner && <input
+                        className={style.inputFile}
+                        type={'file'}
+                        onChange={onMainPhotoSelected}
+                    />}
 
                 {editMode
                     ? <ProfileDataForm
@@ -61,10 +73,7 @@ export default function ProfileInfo(props: ProfileInfoPropsType) {
                     />}
 
 
-                <ProfileStatusWithHooks
-                    status={props.status}
-                    updateStatus={props.updateStatus}
-                />
+
             </div>
         </div>
     );
@@ -80,23 +89,22 @@ const ProfileData: React.FC<ProfileDataType> = ({profile, isOwner, goToEditMode}
     return (
         <div>
 
-            <div>
-                <b>Full name</b>: {profile.fullName}
+            <div className={styles.titlesForm}>
+                <p>Full name</p>: {profile.fullName}
             </div>
 
-            <div>
-                <b>Looking for a job</b>: {profile.lookingForAJob ? 'yes' : 'no'}
+            <div className={styles.titlesForm}>
+                <p>Looking for a job</p>: {profile.lookingForAJob ? 'yes' : 'no'}
             </div>
             {profile.lookingForAJob &&
-            <div>
-                <b>My professional skills</b>: {profile.lookingForAJobDescription}
+            <div className={styles.titlesForm}>
+                <p>My professional skills</p>: {profile.lookingForAJobDescription}
             </div>
             }
 
-            <div>
-                <b>About me</b>: {profile ? 'yes' : 'no'}
+            <div className={styles.titlesForm}>
+                <p>About me</p>: {profile ? 'yes' : 'no'}
             </div>
-
 
 
             <div>
@@ -105,7 +113,10 @@ const ProfileData: React.FC<ProfileDataType> = ({profile, isOwner, goToEditMode}
             })}
             </div>
             {isOwner && <div>
-                <button onClick={goToEditMode}>Edit</button>
+                <button
+                    className={styleCommon.button}
+                    onClick={goToEditMode}>Edit
+                </button>
             </div>}
         </div>
     )
@@ -117,6 +128,6 @@ type ContactTypeProps = {
 }
 const Contact: React.FC<ContactTypeProps> = ({contactTitle, contactValue}) => {
     return (
-        <div className={p.contact}><b>{contactTitle}</b> : {contactValue}</div>
+        <div className={style.contact}><b>{contactTitle}</b> : {contactValue}</div>
     )
 }

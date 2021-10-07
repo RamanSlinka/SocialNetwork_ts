@@ -1,5 +1,6 @@
 import React from "react";
 import style from './Dialogs.module.scss';
+import styleCommon from '../Common/SCSS/input.module.scss'
  import styleBtn from '../Common/SCSS/button.module.scss';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
@@ -49,7 +50,7 @@ const AddMessageForm: React.FC<InjectedFormProps<FormType>> = (props) => {
         <form onSubmit={props.handleSubmit}>
             <div>
                 <Field
-                    className={style.textarea}
+                    className={styleCommon.textarea}
                     component={Textarea}
                     validate={[required, maxLength]}
                     name='newMessageBody' placeholder={'Enter your message'}/>
