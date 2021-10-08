@@ -1,9 +1,12 @@
 
-.wrapper{
+.wrapper {
     margin: 10px;
-max-width: 100%;
+    max-width: 100%;
 }
 
-.video{
-
+.video {
+    max-width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
 }

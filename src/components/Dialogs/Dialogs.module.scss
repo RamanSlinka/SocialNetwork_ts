@@ -4,6 +4,10 @@
     display: grid;
     grid-template-columns: 3fr 10fr;
     grid-template-rows: 200px 200px ;
+    @media screen and (max-width: 630px) {
+      display: flex;
+        flex-direction: column;
+    }
 }
 
 .dialogsItem {

@@ -29,12 +29,13 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
                 {dialogsElements}
 
             </div>
-            <div className={style.messages}>
-                {messagesElements}
-            </div>
             <div className={style.textareaWrapper}>
                 <AddMessageFormRedux onSubmit={addNewMessage}/>
             </div>
+            <div className={style.messages}>
+                {messagesElements}
+            </div>
+
         </div>
     );
 }

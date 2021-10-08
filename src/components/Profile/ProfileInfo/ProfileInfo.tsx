@@ -2,6 +2,7 @@ import React, {ChangeEvent, useState} from "react";
 import styleCommon from '../../Common/SCSS/button.module.scss';
 import styles from '../../Common/FormsControls/FormsControls.module.scss';
 import style from "../Profile.module.scss";
+import styleInfo from './ProfileInfo.module.scss'
 import Preloader from "../../Common/Preloader/Preloader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import userPhoto from "../../../assets/images/user.png"
@@ -23,7 +24,7 @@ export default function ProfileInfo(props: ProfileInfoPropsType) {
 
     let [editMode, setEditMode] = useState(false);
     if (!props.profile) {
-        return <Preloader />
+        return <Preloader/>
     }
     const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
         const files = e.target.files;
@@ -42,20 +43,34 @@ export default function ProfileInfo(props: ProfileInfoPropsType) {
 
     return (
         <div className={style.descriptionBlock}>
-            <ProfileStatusWithHooks
-                status={props.status}
-                updateStatus={props.updateStatus}
-            />
-            <div >
-                <img src={props.profile.photos.large || userPhoto}
-                     className={style.avatar}/>
-                {
-                    props.isOwner && <input
-                        className={style.inputFile}
-                        type={'file'}
-                        onChange={onMainPhotoSelected}
-                    />}
 
+          <div className={styleInfo.headerProfile}>
+            <span className={styleInfo.fullName}>
+                {props.profile.fullName}
+            </span>
+              <ProfileStatusWithHooks
+                  status={props.status}
+                  updateStatus={props.updateStatus}
+              />
+
+
+          </div>
+            <hr style={{ border: " 2px solid gold "}}/>
+
+
+
+                <div className={style.avatarContainer}>
+                    <img src={props.profile.photos.large || userPhoto}
+                         className={style.avatar}/>
+                    {
+                        props.isOwner && <input
+                            className={style.inputFile}
+                            type={'file'}
+                            onChange={onMainPhotoSelected}
+                        />}
+                </div>
+
+                <div>
                 {editMode
                     ? <ProfileDataForm
                         initialValues={props.profile}
@@ -71,10 +86,7 @@ export default function ProfileInfo(props: ProfileInfoPropsType) {
                         isOwner={props.isOwner}
 
                     />}
-
-
-
-            </div>
+                </div>
         </div>
     );
 }
@@ -108,16 +120,21 @@ const ProfileData: React.FC<ProfileDataType> = ({profile, isOwner, goToEditMode}
 
 
             <div>
-                <b>Contacts</b>: {Object.keys(profile.contacts).map((key: any) => {
-                return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
+                <p>Contacts :</p> {Object.keys(profile.contacts).map((key: any) => {
+                return <Contact key={key}
+                                contactTitle={key}
+                                contactValue={profile.contacts[key]}
+                />
             })}
             </div>
+
             {isOwner && <div>
-                <button
-                    className={styleCommon.button}
-                    onClick={goToEditMode}>Edit
-                </button>
-            </div>}
+                             <button
+                                className={styleCommon.button}
+                                 onClick={goToEditMode}
+                                >Edit
+                            </button>
+                        </div>}
         </div>
     )
 }
@@ -128,6 +145,8 @@ type ContactTypeProps = {
 }
 const Contact: React.FC<ContactTypeProps> = ({contactTitle, contactValue}) => {
     return (
-        <div className={style.contact}><b>{contactTitle}</b> : {contactValue}</div>
+        <div className={style.contact}>
+            <b>{contactTitle}</b> : {contactValue}
+        </div>
     )
 }

@@ -5,13 +5,27 @@
     color: $textColor;
     font-size: 25px;
     padding-bottom: 10px;
+    @media screen and (max-width: 500px) {
+        font-size: 17px;
+        margin: 5px 0  0 10px;
+    }
     .img {
+        margin-right: 10px;
         width: 80px;
         border-radius: 50px;
         border: $goldColor 3px solid;
+        @media screen and (max-width: 500px) {
+            margin-right: 5px;
+            width: 50px;
+            border: $goldColor 2px solid;
+        }
     }
     .like{
         font-size: 18px;
+        margin-top: 2px;
+        @media screen and (max-width: 500px) {
+            font-size: 12px;
+        }
     }
 }
 

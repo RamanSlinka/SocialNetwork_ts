@@ -12,6 +12,11 @@
     border: $goldColor 1px solid;
     border-radius: 7px;
     margin: 5px;
+    @media screen and (max-width: 760px) {
+        width: 60%;
+    } @media screen and (max-width: 600px) {
+        width: 80%;
+    }
 
 }
 

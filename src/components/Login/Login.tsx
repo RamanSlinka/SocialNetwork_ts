@@ -23,7 +23,7 @@ type LoginPropsType = {
 
 const LoginForm: React.FC<InjectedFormProps<FormDateType, LoginPropsType> & LoginPropsType> =
     ({handleSubmit, error, captchaUrl}) => {
-        debugger
+
 
         return (
 
@@ -65,7 +65,6 @@ type MapDispatchPropsType = {
 
 
 const Login: React.FC<MapStatePropsType & MapDispatchPropsType> = (props) => {
-    debugger
 
     const onSubmit = (formData: FormDateType) => {
         props.login(formData.email, formData.password,
@@ -84,7 +83,7 @@ const Login: React.FC<MapStatePropsType & MapDispatchPropsType> = (props) => {
                    target={'_blank'}> here
                 </a>
             </p>
-            <p>or use common test account credentials:</p>
+            <p>or use common <br/> test account credentials:</p>
             <p>Email: <span className={style.logPas}>free@samuraijs.com</span></p>
             <p>Password: <span className={style.logPas}>free</span></p>
             <LoginReduxForm

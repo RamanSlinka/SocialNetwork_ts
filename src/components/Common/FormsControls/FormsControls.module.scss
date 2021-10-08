@@ -18,9 +18,17 @@
   font-size: 15px;
 }
 
-.titlesForm{
+.titlesForm {
   display: flex;
   flex-direction: row;
+  @media screen and (max-width: 915px) {
+    width: 200px;
+    font-size: 15px;
+  }
+  @media screen and (max-width: 715px) {
+    width: 150px;
+    font-size: 12px;
+  }
 }
 
 
@@ -29,9 +37,21 @@
   justify-content: center;
   border: $textColor 1px solid;
   border-radius: 7px;
-  width: 40%;
+  width: 50%;
   max-height: 440px;
   padding: 20px;
+  @media screen and (max-width: 815px) {
+    margin: 10px;
+    font-size: 15px;
+    font-weight: normal;
+  }
+  @media screen and (max-width: 500px) {
+    margin: 2px;
+    font-size: 15px;
+    font-weight: normal;
+    padding: 10px;
+    width: 85%;
+  }
 }
 
 .logPas {
