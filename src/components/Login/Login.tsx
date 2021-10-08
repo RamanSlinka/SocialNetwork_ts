@@ -79,7 +79,8 @@ const Login: React.FC<MapStatePropsType & MapDispatchPropsType> = (props) => {
         <div className={style.loginFormWrapper}>
             <h1 className={style.logPas}>Login</h1>
             <p>To log in get registered
-                <a href={'https://social-network.samuraijs.com/'}
+                <a style={{color: "gold"}}
+                   href={'https://social-network.samuraijs.com/'}
                    target={'_blank'}> here
                 </a>
             </p>

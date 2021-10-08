@@ -23,7 +23,7 @@ export default function ProfileInfo(props: ProfileInfoPropsType) {
 
     let [editMode, setEditMode] = useState(false);
     if (!props.profile) {
-        return <Preloader/>
+        return <Preloader />
     }
     const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
         const files = e.target.files;
