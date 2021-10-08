@@ -4,7 +4,7 @@ export default function Video() {
     return (
         <div className={n.wrapper} >
 
-            <iframe width="960" height="515"
+            <iframe
                     src="https://www.youtube.com/embed/0mVbNp1ol_w"
                     title="YouTube video player"
                     frameBorder="0"

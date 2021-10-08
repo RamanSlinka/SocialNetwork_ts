@@ -19,12 +19,16 @@ export const FormControl: React.FC<any> = ({input, meta, child, ...props}) => {
 
 export const Textarea = (props: any) => {
     const {input, meta, child, ...restProps} = props;
-    return <FormControl {...props}><textarea {...input} {...restProps}/></FormControl>
+    return <FormControl {...props}>
+        <textarea {...input} {...restProps}/>
+    </FormControl>
 }
 
 export const Input = (props: any) => {
     const {input, meta, child, ...restProps} = props;
-    return <FormControl {...props}><input {...input} {...restProps}/></FormControl>
+    return <FormControl {...props}>
+        <input {...input} {...restProps}/>
+    </FormControl>
 }
 
 export const CreateField = (placeholder: string | null, name: string,
