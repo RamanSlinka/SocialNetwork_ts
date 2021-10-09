@@ -4,13 +4,24 @@
 .postsBlock {
   padding: 15px;
 
+  @media screen and(max-width: 620px) {
+    padding: 5px;
+  }
+
   .title {
     color: $goldColor;
+    @media screen and(max-width: 620px) {
+      padding-bottom: 10px;
+    }
+
   }
 
   .formWrapper {
     display: flex;
     flex-direction: row;
+    @media screen and(max-width: 620px) {
+      flex-direction: column;
+    }
 
   }
 }

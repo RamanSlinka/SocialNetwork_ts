@@ -1,6 +1,6 @@
 @import "variables";
 
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -19,72 +19,78 @@
   font-weight: bolder;
 
   font-size: medium;
- font-family: "Lato", sans-serif;
- line-height: normal;
+  font-family: "Lato", sans-serif;
+  line-height: normal;
 
-margin: 20px;
-padding: 4px;
-width: 90px;
-height: 30px;
+  margin: 20px;
+  padding: 4px;
+  width: 90px;
+  height: 30px;
 
-outline: none;
-overflow: hidden;
-cursor: pointer;
-position: relative;
+  outline: none;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  @media screen and (max-width: 610px){
+    margin: 10px;
+    height: 25px;
+    font-size: small;
+    width: 70px;
+  }
 }
 
 .button::after {
-display: block;
-content: '';
-position: absolute;
+  display: block;
+  content: '';
+  position: absolute;
 
-left: -130%;
-top: 0;
-height: 100%;
-width: 20%;
+  left: -130%;
+  top: 0;
+  height: 100%;
+  width: 20%;
 
-transform: skew(45deg);
+  transform: skew(45deg);
 
-background-color: $primaryColor;
-opacity: 0.7;
+  background-color: $primaryColor;
+  opacity: 0.7;
 
-z-index: 14;
+  z-index: 14;
 }
 
 .button:hover::after {
-animation: blink 0.35s ease;
+  animation: blink 0.35s ease;
 }
 
 .button:hover::before {
-display: block;
-content: '';
-position: absolute;
+  display: block;
+  content: '';
+  position: absolute;
 
-left: -100vw;
-top: 0;
-height: 100vh;
-width: 300vw;
+  left: -100vw;
+  top: 0;
+  height: 100vh;
+  width: 300vw;
 
-background-color: #fff;
-opacity: 0.2;
+  background-color: #fff;
+  opacity: 0.2;
 
-z-index: 7;
+  z-index: 7;
 }
 
-.button:focus{
+.button:focus {
 
-outline: $goldColor solid 2px;
+  outline: $goldColor solid 2px;
 
 
 }
 
-.button:active{
-background: $textColor;
+.button:active {
+  background: $textColor;
 }
 
-.button:disabled{
-cursor: auto;
-color: $blackColor;
+.button:disabled {
+  cursor: auto;
+  color: $blackColor;
   background: $greyColor;
-border: $blackColor 1px dashed;
+  border: $blackColor 1px dashed;
 }

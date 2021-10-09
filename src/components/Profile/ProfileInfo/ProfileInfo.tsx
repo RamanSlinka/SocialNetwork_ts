@@ -28,8 +28,6 @@ export default function ProfileInfo(props: ProfileInfoPropsType) {
     }
     const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
         const files = e.target.files;
-
-
         if (files && files.length) {
             props.savePhoto(files[0])
         }
@@ -41,52 +39,54 @@ export default function ProfileInfo(props: ProfileInfoPropsType) {
     }
 
 
+
     return (
         <div className={style.descriptionBlock}>
 
-          <div className={styleInfo.headerProfile}>
-            <span className={styleInfo.fullName}>
+
+            <div className={style.avatarContainer}>
+                <img src={props.profile.photos.large || userPhoto}
+                     className={style.avatar}/>
+                {
+                    props.isOwner && <input
+                        className={style.inputFile}
+                        type={'file'}
+                        onChange={onMainPhotoSelected}
+                    />}
+            </div>
+
+            <div className={style.infoBlock}>
+                <div className={styleInfo.headerProfile}>
+                <span className={styleInfo.fullName}>
                 {props.profile.fullName}
-            </span>
-              <ProfileStatusWithHooks
-                  status={props.status}
-                  updateStatus={props.updateStatus}
-              />
+                </span>
+                    <ProfileStatusWithHooks
+                        status={props.status}
+                        updateStatus={props.updateStatus}
+                    />
+                </div>
+                <hr style={{border: " 1px solid gold "}}/>
 
+                <div className={style.detailedInfo}>
+                    <h3 className={style.titleDetailedInfo} >
+                        Detailed information</h3>
+                    {editMode
+                        ? <ProfileDataForm
+                            initialValues={props.profile}
+                            // @ts-ignore
+                            profile={props.profile}
+                            onSubmit={onSubmit}
+                        />
+                        : <ProfileData
+                            goToEditMode={() => {
+                                setEditMode(true)
+                            }}
+                            profile={props.profile}
+                            isOwner={props.isOwner}
 
-          </div>
-            <hr style={{ border: " 2px solid gold "}}/>
-
-
-
-                <div className={style.avatarContainer}>
-                    <img src={props.profile.photos.large || userPhoto}
-                         className={style.avatar}/>
-                    {
-                        props.isOwner && <input
-                            className={style.inputFile}
-                            type={'file'}
-                            onChange={onMainPhotoSelected}
                         />}
                 </div>
-
-                <div>
-                {editMode
-                    ? <ProfileDataForm
-                        initialValues={props.profile}
-                        // @ts-ignore
-                        profile={props.profile}
-                        onSubmit={onSubmit}
-                    />
-                    : <ProfileData
-                        goToEditMode={() => {
-                            setEditMode(true)
-                        }}
-                        profile={props.profile}
-                        isOwner={props.isOwner}
-
-                    />}
-                </div>
+            </div>
         </div>
     );
 }
@@ -129,12 +129,12 @@ const ProfileData: React.FC<ProfileDataType> = ({profile, isOwner, goToEditMode}
             </div>
 
             {isOwner && <div>
-                             <button
-                                className={styleCommon.button}
-                                 onClick={goToEditMode}
-                                >Edit
-                            </button>
-                        </div>}
+                <button
+                    className={styleCommon.button}
+                    onClick={goToEditMode}
+                >Edit
+                </button>
+            </div>}
         </div>
     )
 }

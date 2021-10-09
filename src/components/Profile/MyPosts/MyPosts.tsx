@@ -54,7 +54,7 @@ const AddNewPostForm: React.FC<InjectedFormProps<FormType>> = (props) => {
                 validate={[required, maxLength10]}
             />
 
-            <br/>
+
             <button
                 className={styleBtn.button}>Send
             </button>
