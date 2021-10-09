@@ -20,6 +20,9 @@
     .avatar {
         width: 150px;
         border-radius: 7px;
+        @media screen and(max-width: 655px){
+            width: 100px;
+        }
     }
 }
 
