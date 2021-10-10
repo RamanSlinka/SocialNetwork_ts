@@ -15,6 +15,7 @@ type HeaderPropsType = {
 export default function Header(props: HeaderPropsType) {
     return <header className={style.header}>
         <img
+            className={style.logo}
             src={logo} alt="logo"/>
         <div className={style.loginBlock}>
             {props.isAuth

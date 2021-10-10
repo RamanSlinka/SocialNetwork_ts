@@ -4,6 +4,7 @@
     flex-direction: row;
     @media screen and (max-width: 750px) {
         flex-direction: column;
+        padding: 3px;
     }
 }
 
@@ -18,7 +19,7 @@
 .avatarContainer{
     width: 170px;
     .avatar {
-        width: 150px;
+        width: 180px;
         border-radius: 7px;
         @media screen and(max-width: 655px){
             width: 100px;

@@ -14,8 +14,8 @@ import {compose} from "redux";
 import {initializeApp} from "./Redux/AppReducer";
 import {AppStateType} from "./Redux/redux-store";
 import Preloader from "./components/Common/Preloader/Preloader";
-// import DialogsContainer from "./components/Dialogs/DialogsContainer";
-// import ProfileContainer from "./components/Profile/ProfileContainer";
+import WelcomePage from "./components/WelcomePage/WelcomePage";
+
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"))
 const ProfileContainer = React.lazy(() => import ("./components/Profile/ProfileContainer"))
 
@@ -32,45 +32,48 @@ class App extends React.Component<PropsType> {
 
         return (
             <div className="AppBG">
-            <div className='app-wrapper'>
-                <HeaderContainer/>
-                <NavBar/>
-                <div className='app-wrapper-content'>
-                    <Switch>
-                        <Route exact path='/'
-                               render={() => <Redirect to= {'/profile'}/>}/>
+                <div className='app-wrapper'>
+                    <HeaderContainer/>
+                    <NavBar/>
+                    <div className='app-wrapper-content'>
+                        <Switch>
+                            <Route exact path='/'
+                                   render={() => <Redirect to={'/profile'}/>}/>
 
-                    <Route path='/dialogs'
-                           render={() => {
-                               return <React.Suspense fallback={<Preloader/>}>
-                                   <DialogsContainer/>
-                               </React.Suspense>
-                           }}/>
+                            <Route path='/dialogs'
+                                   render={() => {
+                                       return <React.Suspense fallback={<Preloader/>}>
+                                           <DialogsContainer/>
+                                       </React.Suspense>
+                                   }}/>
 
-                    <Route path='/profile/:userId?'
-                           render={() => {
-                               return <React.Suspense fallback={<Preloader/>}>
-                                   <ProfileContainer/>
-                               </React.Suspense>
+                            <Route path='/profile/:userId?'
+                                   render={() => {
+                                       return <React.Suspense fallback={<Preloader/>}>
+                                           <ProfileContainer/>
+                                       </React.Suspense>
 
-                           }}/>
+                                   }}/>
 
-                    <Route path='/users'
-                           render={() => <UsersContainer/>}/>
+                            <Route path='/SocialNetwork_ts/'
+                                   render={() => <WelcomePage/>}/>
 
-                    <Route path='/login'
-                           render={() => <Login/>}/>
+                            <Route path='/users'
+                                   render={() => <UsersContainer/>}/>
+
+                            <Route path='/login'
+                                   render={() => <Login/>}/>
 
 
-                    <Route path='/video' component={Video}/>
-                    <Route path='/music' component={Music}/>
-                    <Route path='/settings' component={Settings}/>
-                    <Route path='/sidebar' sidebar={Sidebar}/>
-                        {/*<Route path='/*'*/}
-                        {/*       render={() => <div>404 PAGE NOT FOUND </div>}/>*/}
-                    </Switch>
+                            <Route path='/video' component={Video}/>
+                            <Route path='/music' component={Music}/>
+                            <Route path='/settings' component={Settings}/>
+                            <Route path='/sidebar' sidebar={Sidebar}/>
+                            {/*<Route path='/*'*/}
+                            {/*       render={() => <div>404 PAGE NOT FOUND </div>}/>*/}
+                        </Switch>
                     </div>
-            </div>
+                </div>
             </div>
         );
     }

@@ -1,0 +1,23 @@
+@import '../Common/SCSS/variables';
+
+.wrapper{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  color: $textColor;
+  @media screen and (max-width: 600px) {
+    font-size: 12px;
+  }
+
+  .title{
+    align-items: center;
+    color: $textColor;
+    @media screen and (max-width: 600px) {
+      font-size: 15px;
+    }
+  }
+  li{
+    line-height: 20px;
+  }
+}

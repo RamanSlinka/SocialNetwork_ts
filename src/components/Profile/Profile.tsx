@@ -2,6 +2,7 @@ import React from 'react';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import {profileType} from "../../Redux/ProfileReduser";
+import CarouselPage from "../carousel/CarouselPage";
 
 
 type ProfilePropsType = {
@@ -16,6 +17,7 @@ type ProfilePropsType = {
 export default function Profile(props: ProfilePropsType) {
     return (
         <div>
+            <CarouselPage/>
             <ProfileInfo
                 saveProfile={props.saveProfile}
                 savePhoto={props.savePhoto}
