@@ -15,6 +15,7 @@ import {initializeApp} from "./Redux/AppReducer";
 import {AppStateType} from "./Redux/redux-store";
 import Preloader from "./components/Common/Preloader/Preloader";
 import WelcomePage from "./components/WelcomePage/WelcomePage";
+import Footer from "./components/footer/Footer";
 
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"))
 const ProfileContainer = React.lazy(() => import ("./components/Profile/ProfileContainer"))
@@ -73,6 +74,7 @@ class App extends React.Component<PropsType> {
                             {/*       render={() => <div>404 PAGE NOT FOUND </div>}/>*/}
                         </Switch>
                     </div>
+                    <Footer/>
                 </div>
             </div>
         );

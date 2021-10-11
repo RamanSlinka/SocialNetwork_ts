@@ -65,7 +65,7 @@ export default function ProfileInfo(props: ProfileInfoPropsType) {
                         updateStatus={props.updateStatus}
                     />
                 </div>
-                <hr style={{border: " 1px solid gold "}}/>
+                <hr style={{border: " 2px solid grey "}}/>
 
                 <div className={style.detailedInfo}>
                     <h3 className={style.titleDetailedInfo} >

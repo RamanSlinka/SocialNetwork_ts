@@ -19,7 +19,7 @@ const WelcomePage = () => {
                     <li> <CheckOutlined  style={{color: "gold"}}/> Redux, React redux typescript, Thunk.</li>
                     <li><CheckOutlined  style={{color: "gold"}}/>  React router. Page navigation. BrowserRouter, Route, Switch, Redirect.</li>
                     <li><CheckOutlined  style={{color: "gold"}}/> Decomposition</li>
-                    <li> <CheckOutlined  style={{color: "gold"}}/> Working with the server. Axios. JSON.</li>
+                    <li> <CheckOutlined  style={{color: "gold"}}/> Working with the server. Axios. </li>
                     <li><CheckOutlined  style={{color: "gold"}}/> User authorization.</li>
                     <li><CheckOutlined  style={{color: "gold"}}/> Redux-form</li>
                     <li> <CheckOutlined  style={{color: "gold"}}/> SASS. Module.scss. Variables</li>
